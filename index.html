@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FRAU ROT - Menstrual health app. Guided by nature. Powered by you.">
+  <title>FRAU ROT - Menstrual Health Companion</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+  <!-- Page Container -->
+  <div id="app-container" class="app-container">
+
+    <!-- ===================================
+         LANDING & AUTH PAGES
+         =================================== -->
+
+    <!-- Hero Section -->
+    <section id="hero-page" class="page-section hero">
+      <nav class="navbar">
+        <div class="navbar__container">
+          <div class="navbar__logo">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" width="18" height="8">
+            
+          </div>
+          
+          <div class="navbar__menu">
+            <a href="#" class="navbar__link"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#" class="navbar__link"><i class="fas fa-star"></i> Features</a>
+            <a href="#" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
+            <a href="#" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="#" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
+          </div>
+
+          <div class="navbar__actions">
+            <button class="navbar__btn navbar__btn--outline" onclick="navigateTo('login-page')">
+              <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+            <button class="navbar__btn navbar__btn--primary" onclick="navigateTo('signup-page')">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+          </div>
+
+          <button class="navbar__toggle" id="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="hero__content">
+        <h1 class="hero__title">FRAU ROT</h1>
+        <p class="hero__subtitle">Guided By Nature. Powered By You</p>
+        
+        <div class="hero__buttons">
+          <button class="btn btn--primary" onclick="navigateTo('signup-page')">Sign Up</button>
+          <button class="btn btn--secondary" onclick="navigateTo('login-page')">Sign In</button>
+        </div>
+
+        <p class="hero__cta-text">Already have an account? <a href="#" onclick="navigateTo('login-page')" class="hero__link">Sign In</a></p>
+      </div>
+    </section>
+
+    <!-- Sign Up Section -->
+    <section id="signup-page" class="page-section signup hidden">
+      <nav class="navbar">
+        <div class="navbar__container">
+          <div class="navbar__logo">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo">
+            <span class="navbar__brand">FRAU ROT</span>
+          </div>
+          
+          <div class="navbar__menu">
+            <a href="#" class="navbar__link" onclick="navigateTo('hero-page')"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#" class="navbar__link"><i class="fas fa-star"></i> Features</a>
+            <a href="#" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
+            <a href="#" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="#" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
+          </div>
+
+          <div class="navbar__actions">
+            <button class="navbar__btn navbar__btn--outline" onclick="navigateTo('login-page')">
+              <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+            <button class="navbar__btn navbar__btn--primary" onclick="navigateTo('signup-page')">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+          </div>
+
+          <button class="navbar__toggle" id="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="section-banner">
+          <div class="section-banner__text">
+            <h2 class="section-title">Hello Beautiful,</h2>
+            <p class="section-subtitle">Create your account and start your wellness journey</p>
+          </div>
+          <div class="section-banner__image">
+            <img src="images/vector of woc.jpg" alt="Women illustration">
+          </div>
+        </div>
+
+        <div class="form-container">
+          <p class="form-instruction"><i class="fas fa-lock"></i> Your information is private and secure. We'll never share your data.</p>
+
+          <form class="form" id="signup-form">
+            <div class="form-group">
+              <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
+              <input type="email" class="form-input form-input--underline" placeholder="Email address" required/>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-lock"></i> Password</label>
+                <input type="password" class="form-input form-input--underline" placeholder="Password" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-lock"></i> Confirm</label>
+                <input type="password" class="form-input form-input--underline" placeholder="Confirm Password" required/>
+              </div>
+            </div>
+
+            <div class="form-buttons">
+              <button type="button" class="btn btn--light">
+                <i class="fab fa-google"></i> Continue with Google
+              </button>
+              <button type="submit" class="btn btn--primary" onclick="navigateTo('welcome-page')">Create Account</button>
+            </div>
+          </form>
+
+          <p class="form-agreement">By signing up, you agree to our <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a></p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__content">
+          <div class="footer__section">
+            <h4><i class="fas fa-heart"></i> About FRAU ROT</h4>
+            <p>Your intelligent menstrual health companion, helping you understand your body naturally.</p>
+          </div>
+          <div class="footer__section">
+            <h4><i class="fas fa-link"></i> Quick Links</h4>
+            <ul>
+              <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+              <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+              <li><a href="#"><i class="fas fa-book"></i> Blog</a></li>
+              <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+            </ul>
+          </div>
+          <div class="footer__section">
+            <h4><i class="fas fa-phone"></i> Contact</h4>
+            <p><i class="fas fa-envelope"></i> support@fraurot.com</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
+          </div>
+          <div class="footer__section">
+            <h4><i class="fas fa-share-alt"></i> Follow</h4>
+            <div class="social-links">
+              <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 FRAU ROT. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a></p>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login-page" class="page-section login hidden">
+      <nav class="navbar">
+        <div class="navbar__container">
+          <div class="navbar__logo">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo">
+            <span class="navbar__brand">FRAU ROT</span>
+          </div>
+          
+          <div class="navbar__menu">
+            <a href="#" class="navbar__link" onclick="navigateTo('hero-page')"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#" class="navbar__link"><i class="fas fa-star"></i> Features</a>
+            <a href="#" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
+            <a href="#" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="#" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
+          </div>
+
+          <div class="navbar__actions">
+            <button class="navbar__btn navbar__btn--outline" onclick="navigateTo('login-page')">
+              <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+            <button class="navbar__btn navbar__btn--primary" onclick="navigateTo('signup-page')">
+              <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+          </div>
+
+          <button class="navbar__toggle" id="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="section-banner">
+          <div class="section-banner__text">
+            <h2 class="section-title">Welcome Back, Ewura</h2>
+            <p class="section-subtitle">Continue your wellness journey with us</p>
+          </div>
+          <div class="section-banner__image">
+            <img src="images/vector of woc.jpg" alt="Women illustration">
+          </div>
+        </div>
+
+        <div class="form-container">
+          <form class="form" id="login-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" class="form-input form-input--underline" placeholder="Email address" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-lock"></i> Password</label>
+                <input type="password" class="form-input form-input--underline" placeholder="Password" required/>
+              </div>
+            </div>
+
+            <div class="signin-options">
+              <div class="signin-option">
+                <input type="checkbox" id="apple-signin" class="checkbox">
+                <label for="apple-signin" class="checkbox-label"><i class="fab fa-apple"></i> Enable Sign In With Apple</label>
+              </div>
+            </div>
+
+            <div class="form-buttons">
+              <button type="button" class="btn btn--apple">
+                <i class="fab fa-apple"></i> Sign In with Apple
+              </button>
+              <button type="button" class="btn btn--light">
+                <i class="fab fa-google"></i> Continue with Google
+              </button>
+              <button type="submit" class="btn btn--primary" onclick="navigateTo('welcome-page')">Sign In</button>
+            </div>
+          </form>
+
+          <div class="login-footer">
+            <a href="#" class="link"><i class="fas fa-key"></i> Forgot your password?</a>
+            <span class="separator">•</span>
+            <a href="#" onclick="navigateTo('signup-page')" class="link"><i class="fas fa-user-plus"></i> Create account</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__content">
+          <div class="footer__section">
+            <h4><i class="fas fa-heart"></i> About FRAU ROT</h4>
+            <p>Your intelligent menstrual health companion, helping you understand your body naturally.</p>
+          </div>
+          <div class="footer__section">
+            <h4><i class="fas fa-link"></i> Quick Links</h4>
+            <ul>
+              <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+              <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+              <li><a href="#"><i class="fas fa-book"></i> Blog</a></li>
+              <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+            </ul>
+          </div>
+          <div class="footer__section">
+            <h4><i class="fas fa-phone"></i> Contact</h4>
+            <p><i class="fas fa-envelope"></i> support@fraurot.com</p>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
+          </div>
+          <div class="footer__section">
+            <h4><i class="fas fa-share-alt"></i> Follow</h4>
+            <div class="social-links">
+              <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 FRAU ROT. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Cookie Policy</a></p>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ===================================
+         ONBOARDING PAGES
+         =================================== -->
+
+    <!-- Welcome Screen -->
+    <section id="welcome-page" class="page-section welcome-hero hidden">
+      <div class="onboarding-content">
+        <i class="fas fa-heart" style="font-size: 64px; color: white; margin-bottom: 32px;"></i>
+        <h1 class="onboarding-title"><i class="fas fa-star"></i> Welcome!</h1>
+        <p class="onboarding-subtitle">Let's set up your menstrual health companion to help you understand your body better</p>
+        <button class="btn btn--primary btn--lg" onclick="navigateTo('cycle-length-page')"><i class="fas fa-arrow-right"></i> Get Started</button>
+      </div>
+    </section>
+
+    <!-- Cycle Length Input -->
+    <section id="cycle-length-page" class="page-section cycle-length-page hidden">
+      <div class="onboarding-card">
+        <h2 class="onboarding-question"><i class="fas fa-calendar-alt"></i> What is your typical cycle length?</h2>
+        <p class="onboarding-hint"><i class="fas fa-info-circle"></i> This helps us predict your cycle phases</p>
+        
+        <div class="chips-container">
+          <button class="chip" onclick="selectChip(this, 'cycle-length', 21)">21 days</button>
+          <button class="chip" onclick="selectChip(this, 'cycle-length', 24)">24 days</button>
+          <button class="chip" onclick="selectChip(this, 'cycle-length', 28)">28 days</button>
+          <button class="chip" onclick="selectChip(this, 'cycle-length', 30)">30 days</button>
+          <button class="chip" onclick="selectChip(this, 'cycle-length', 35)">35 days</button>
+          <button class="chip" onclick="selectChip(this, 'cycle-length', 40)">40 days</button>
+        </div>
+
+        <button class="btn btn--primary btn--lg" onclick="navigateTo('dashboard-page')" id="cycle-continue-btn" disabled>Continue</button>
+      </div>
+    </section>
+
+    <!-- ===================================
+         MAIN APP PAGES (WITH SIDEBAR NAV)
+         =================================== -->
+
+    <!-- Dashboard -->
+    <section id="dashboard-page" class="page-section dashboard-page hidden">
+      <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item active" data-page="dashboard">
+              <span class="nav-icon">📊</span>
+              <span class="nav-label">Cycles</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <span class="nav-icon">💡</span>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('reminders-page')" class="nav-item" data-page="reminders">
+              <span class="nav-icon">🔔</span>
+              <span class="nav-label">Reminders</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <span class="nav-icon">👤</span>
+              <span class="nav-label">Profile</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+          <div class="dashboard-header">
+            <h1 class="page-title"><i class="fas fa-home"></i> Welcome Back, Ewura</h1>
+            <p class="page-subtitle">Your cycle, your insights, your power 💜</p>
+          </div>
+
+          <div class="dashboard-grid">
+            <!-- Today Card -->
+            <div class="card card--today">
+              <h2 class="card__title"><i class="fas fa-heart"></i> How You're Feeling</h2>
+              <div class="today-phase">
+                <div class="phase-badge phase-badge--menstrual">Menstrual Phase</div>
+                <p class="today-info">You're on Day 2 of your cycle</p>
+                <p class="today-subtext">Take it easy. You deserve rest today 🫂</p>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card card--actions">
+              <h3 class="card__title"><i class="fas fa-hand-fist"></i> Take Action</h3>
+              <button class="btn btn--primary btn--block" onclick="navigateTo('add-period-page')">
+                <i class="fas fa-calendar-plus"></i> Log Your Period
+              </button>
+              <button class="btn btn--light btn--block">
+                <i class="fas fa-pen-fancy"></i> Record How You Feel
+              </button>
+            </div>
+          </div>
+
+          <!-- Cycle Insights -->
+          <div class="insights-summary">
+            <h3 class="section-label"><i class="fas fa-chart-line"></i> Your Cycle at a Glance</h3>
+            <div class="insights-grid">
+              <div class="insight-card">
+                <i class="fas fa-calendar" style="color: var(--color-primary-pink); font-size: 24px; margin-bottom: 8px;"></i>
+                <div class="insight-value">28</div>
+                <div class="insight-label">Days</div>
+              </div>
+              <div class="insight-card">
+                <i class="fas fa-droplet" style="color: var(--color-primary-pink); font-size: 24px; margin-bottom: 8px;"></i>
+                <div class="insight-value">5</div>
+                <div class="insight-label">Expected Flow</div>
+              </div>
+              <div class="insight-card">
+                <i class="fas fa-egg" style="color: var(--color-primary-pink); font-size: 24px; margin-bottom: 8px;"></i>
+                <div class="insight-value">8</div>
+                <div class="insight-label">Days to Ovulation</div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- Insights Page -->
+    <section id="insights-page" class="page-section insights-page hidden">
+      <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item" data-page="dashboard">
+              <span class="nav-icon">📊</span>
+              <span class="nav-label">Cycles</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item active" data-page="insights">
+              <span class="nav-icon">💡</span>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('reminders-page')" class="nav-item" data-page="reminders">
+              <span class="nav-icon">🔔</span>
+              <span class="nav-label">Reminders</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <span class="nav-icon">👤</span>
+              <span class="nav-label">Profile</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+          <h1 class="page-title">Today's Insights</h1>
+
+          <div class="insights-container">
+            <!-- Left Column -->
+            <div class="insights-left">
+              <!-- Mood Selector -->
+              <div class="insight-section">
+                <h3 class="insight-title"><i class="fas fa-smile"></i> How are you feeling?</h3>
+                <div class="chips-container">
+                  <button class="chip" onclick="selectChip(this, 'mood', 'happy')"><i class="fas fa-face-grin"></i> Happy</button>
+                  <button class="chip" onclick="selectChip(this, 'mood', 'neutral')"><i class="fas fa-face-meh"></i> Neutral</button>
+                  <button class="chip" onclick="selectChip(this, 'mood', 'sad')"><i class="fas fa-face-frown"></i> Sad</button>
+                  <button class="chip" onclick="selectChip(this, 'mood', 'energetic')"><i class="fas fa-bolt"></i> Energetic</button>
+                  <button class="chip" onclick="selectChip(this, 'mood', 'tired')"><i class="fas fa-bed"></i> Tired</button>
+                  <button class="chip" onclick="selectChip(this, 'mood', 'anxious')"><i class="fas fa-heart-pulse"></i> Anxious</button>
+                </div>
+              </div>
+
+              <!-- Symptoms -->
+              <div class="insight-section">
+                <h3 class="insight-title"><i class="fas fa-heartbeat"></i> Symptoms</h3>
+                <div class="chips-container">
+                  <button class="chip" onclick="selectChip(this, 'symptoms', 'cramps')"><i class="fas fa-wave-sine"></i> Cramps</button>
+                  <button class="chip" onclick="selectChip(this, 'symptoms', 'headache')"><i class="fas fa-head-side-virus"></i> Headache</button>
+                  <button class="chip" onclick="selectChip(this, 'symptoms', 'bloating')"><i class="fas fa-person"></i> Bloating</button>
+                  <button class="chip" onclick="selectChip(this, 'symptoms', 'fatigue')"><i class="fas fa-running"></i> Fatigue</button>
+                  <button class="chip" onclick="selectChip(this, 'symptoms', 'acne')"><i class="fas fa-spa"></i> Acne</button>
+                  <button class="chip" onclick="selectChip(this, 'symptoms', 'pms')"><i class="fas fa-triangle-exclamation"></i> PMS</button>
+                </div>
+              </div>
+
+              <!-- Discharge -->
+              <div class="insight-section">
+                <h3 class="insight-title"><i class="fas fa-droplet"></i> Discharge</h3>
+                <div class="chips-container">
+                  <button class="chip" onclick="selectChip(this, 'discharge', 'light')"><i class="fas fa-minus"></i> Light</button>
+                  <button class="chip" onclick="selectChip(this, 'discharge', 'moderate')"><i class="fas fa-equals"></i> Moderate</button>
+                  <button class="chip" onclick="selectChip(this, 'discharge', 'heavy')"><i class="fas fa-plus"></i> Heavy</button>
+                  <button class="chip" onclick="selectChip(this, 'discharge', 'stretchy')"><i class="fas fa-arrows-alt"></i> Stretchy</button>
+                </div>
+              </div>
+
+              <!-- Flow -->
+              <div class="insight-section">
+                <h3 class="insight-title"><i class="fas fa-water"></i> Flow</h3>
+                <div class="chips-container">
+                  <button class="chip" onclick="selectChip(this, 'flow', 'light')"><i class="fas fa-droplet"></i> Light</button>
+                  <button class="chip" onclick="selectChip(this, 'flow', 'moderate')"><i class="fas fa-droplets"></i> Moderate</button>
+                  <button class="chip" onclick="selectChip(this, 'flow', 'heavy')"><i class="fas fa-water"></i> Heavy</button>
+                </div>
+              </div>
+
+              <!-- Sex Activity -->
+              <div class="insight-section">
+                <h3 class="insight-title"><i class="fas fa-heart"></i> Sexual Activity</h3>
+                <div class="chips-container">
+                  <button class="chip" onclick="selectChip(this, 'sex', 'yes')"><i class="fas fa-check"></i> Yes</button>
+                  <button class="chip" onclick="selectChip(this, 'sex', 'no')"><i class="fas fa-times"></i> No</button>
+                  <button class="chip" onclick="selectChip(this, 'sex', 'prefer-not')"><i class="fas fa-eye-slash"></i> Prefer not to say</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="insights-right">
+              <!-- Notes -->
+              <div class="insight-section">
+                <h3 class="insight-title"><i class="fas fa-sticky-note"></i> Notes</h3>
+                <textarea class="form-input form-input--textarea" placeholder="Add any additional notes about your day..." rows="8"></textarea>
+                <button class="btn btn--primary btn--block mt-lg"><i class="fas fa-save"></i> Save Notes</button>
+              </div>
+
+              <!-- Summary Card -->
+              <div class="card card--summary">
+                <h3 class="card__title"><i class="fas fa-chart-pie"></i> Summary</h3>
+                <div class="summary-item">
+                  <span class="summary-label"><i class="fas fa-circle-dot"></i> Cycle Phase:</span>
+                  <span class="summary-value">Menstrual</span>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label"><i class="fas fa-calendar-days"></i> Day:</span>
+                  <span class="summary-value">2 of 28</span>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label"><i class="fas fa-star"></i> Next Event:</span>
+                  <span class="summary-value">Ovulation (8 days)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Articles Section -->
+          <div class="articles-section">
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> Recommended Articles</h2>
+            <p class="section-subtitle">Learn more about your menstrual health</p>
+            
+            <div class="articles-grid">
+              <article class="article-card">
+                <div class="article-image" style="background: linear-gradient(135deg, #C4004E, #FF8FA3);"></div>
+                <div class="article-content">
+                  <h3 class="article-title"><i class="fas fa-dna"></i> Understanding Your Cycle</h3>
+                  <p class="article-description">Learn about the 4 phases of your menstrual cycle and what happens in each phase.</p>
+                  <a href="#" class="article-link"><i class="fas fa-arrow-right"></i> Read More</a>
+                </div>
+              </article>
+
+              <article class="article-card">
+                <div class="article-image" style="background: linear-gradient(135deg, #A80243, #E85D8A);"></div>
+                <div class="article-content">
+                  <h3 class="article-title"><i class="fas fa-spa"></i> Managing Period Pain</h3>
+                  <p class="article-description">Effective strategies and natural remedies for managing menstrual cramps.</p>
+                  <a href="#" class="article-link"><i class="fas fa-arrow-right"></i> Read More</a>
+                </div>
+              </article>
+
+              <article class="article-card">
+                <div class="article-image" style="background: linear-gradient(135deg, #BD0455, #FF7FB8);"></div>
+                <div class="article-content">
+                  <h3 class="article-title"><i class="fas fa-apple"></i> Nutrition & Your Cycle</h3>
+                  <p class="article-description">Discover the best foods to eat during each phase of your cycle.</p>
+                  <a href="#" class="article-link"><i class="fas fa-arrow-right"></i> Read More</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- Reminders / Phases Page -->
+    <section id="reminders-page" class="page-section reminders-page hidden">
+      <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item" data-page="dashboard">
+              <span class="nav-icon">📊</span>
+              <span class="nav-label">Cycles</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <span class="nav-icon">💡</span>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('reminders-page')" class="nav-item active" data-page="reminders">
+              <span class="nav-icon">🔔</span>
+              <span class="nav-label">Reminders</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <span class="nav-icon">👤</span>
+              <span class="nav-label">Profile</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+          <h1 class="page-title">Cycle Phases</h1>
+
+          <div class="phases-container">
+            <div class="phase-row">
+              <div class="phase-card">
+                <div class="phase-badge phase-badge--menstrual"><i class="fas fa-water"></i> Menstrual</div>
+                <p class="phase-duration">Days 1-5</p>
+                <p class="phase-description">Shedding of the uterine lining. Focus on rest and self-care.</p>
+              </div>
+              <div class="phase-details">
+                <p class="detail-label"><i class="fas fa-calendar-alt"></i> November 18-22, 2025</p>
+                <a href="#" class="detail-link"><i class="fas fa-bell"></i> Set Reminder</a>
+              </div>
+            </div>
+
+            <div class="phase-row">
+              <div class="phase-card">
+                <div class="phase-badge phase-badge--follicular"><i class="fas fa-leaf"></i> Follicular</div>
+                <p class="phase-duration">Days 6-13</p>
+                <p class="phase-description">Rising energy. Great time for new projects and social activities.</p>
+              </div>
+              <div class="phase-details">
+                <p class="detail-label"><i class="fas fa-calendar-alt"></i> November 23-30, 2025</p>
+                <a href="#" class="detail-link"><i class="fas fa-bell"></i> Set Reminder</a>
+              </div>
+            </div>
+
+            <div class="phase-row">
+              <div class="phase-card">
+                <div class="phase-badge phase-badge--ovulation"><i class="fas fa-star"></i> Ovulation</div>
+                <p class="phase-duration">Days 14-15</p>
+                <p class="phase-description">Peak energy and fertility. Confidence and social confidence at highest.</p>
+              </div>
+              <div class="phase-details">
+                <p class="detail-label"><i class="fas fa-calendar-alt"></i> December 1-2, 2025</p>
+                <a href="#" class="detail-link"><i class="fas fa-bell"></i> Set Reminder</a>
+              </div>
+            </div>
+
+            <div class="phase-row">
+              <div class="phase-card">
+                <div class="phase-badge phase-badge--luteal"><i class="fas fa-moon"></i> Luteal</div>
+                <p class="phase-duration">Days 16-28</p>
+                <p class="phase-description">Preparing for menstruation. Inward focus, rest, and nutrition important.</p>
+              </div>
+              <div class="phase-details">
+                <p class="detail-label"><i class="fas fa-calendar-alt"></i> December 3-15, 2025</p>
+                <a href="#" class="detail-link"><i class="fas fa-bell"></i> Set Reminder</a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- Add Period Screen -->
+    <section id="add-period-page" class="page-section add-period-page hidden">
+      <div class="app-layout">
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item active" data-page="dashboard">
+              <span class="nav-icon">📊</span>
+              <span class="nav-label">Cycles</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <span class="nav-icon">💡</span>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('reminders-page')" class="nav-item" data-page="reminders">
+              <span class="nav-icon">🔔</span>
+              <span class="nav-label">Reminders</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <span class="nav-icon">👤</span>
+              <span class="nav-label">Profile</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="modal-card">
+            <h1 class="modal-title"><i class="fas fa-calendar-plus"></i> Add Period</h1>
+            <p class="modal-subtitle">Mark the first day of your period</p>
+
+            <form class="form" id="add-period-form">
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-calendar-days"></i> Date</label>
+                <input type="date" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label"><i class="fas fa-droplet"></i> Flow</label>
+                <div class="chips-container">
+                  <button type="button" class="chip" onclick="selectChip(this, 'add-flow', 'light')"><i class="fas fa-droplet"></i> Light</button>
+                  <button type="button" class="chip" onclick="selectChip(this, 'add-flow', 'moderate')"><i class="fas fa-droplets"></i> Moderate</button>
+                  <button type="button" class="chip" onclick="selectChip(this, 'add-flow', 'heavy')"><i class="fas fa-water"></i> Heavy</button>
+                </div>
+              </div>
+
+              <div class="form-buttons">
+                <button type="submit" class="btn btn--primary btn--block"><i class="fas fa-check"></i> Add Period</button>
+                <button type="button" class="btn btn--light btn--block" onclick="navigateTo('dashboard-page')"><i class="fas fa-times"></i> Cancel</button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- Profile Page (Placeholder) -->
+    <section id="profile-page" class="page-section profile-page hidden">
+      <div class="app-layout">
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item" data-page="dashboard">
+              <i class="fas fa-home"></i>
+              <span class="nav-label">Home</span>
+            </a>
+            <a href="#" onclick="navigateTo('calendar-page')" class="nav-item" data-page="calendar">
+              <i class="fas fa-calendar-alt"></i>
+              <span class="nav-label">Calendar</span>
+            </a>
+            <a href="#" onclick="navigateTo('cycle-timeline-page')" class="nav-item" data-page="cycle">
+              <i class="fas fa-circle-notch"></i>
+              <span class="nav-label">Your Cycle</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <i class="fas fa-chart-line"></i>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('articles-page')" class="nav-item" data-page="articles">
+              <i class="fas fa-book-open"></i>
+              <span class="nav-label">Learn</span>
+            </a>
+            <a href="#" onclick="navigateTo('logs-page')" class="nav-item" data-page="logs">
+              <i class="fas fa-history"></i>
+              <span class="nav-label">Logs</span>
+            </a>
+            <a href="#" onclick="navigateTo('partner-page')" class="nav-item" data-page="partner">
+              <i class="fas fa-heart"></i>
+              <span class="nav-label">Partner</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <i class="fas fa-cog"></i>
+              <span class="nav-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <h1 class="page-title">My Profile</h1>
+          <div class="profile-grid">
+            <!-- Account Section -->
+            <div class="card">
+              <h2 class="card__title"><i class="fas fa-user"></i> Account Information</h2>
+              <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-input form-input--underline" value="Ewura" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input form-input--underline" value="ewura@example.com" />
+              </div>
+              <button class="btn btn--primary" style="margin-top: 16px;"><i class="fas fa-save"></i> Save Changes</button>
+            </div>
+
+            <!-- Cycle Settings -->
+            <div class="card">
+              <h2 class="card__title"><i class="fas fa-cog"></i> Cycle Preferences</h2>
+              <div class="form-group">
+                <label class="form-label">Average Cycle Length</label>
+                <select class="form-input form-input--underline">
+                  <option>28 days</option>
+                  <option>26 days</option>
+                  <option>30 days</option>
+                  <option>32 days</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Period Duration</label>
+                <select class="form-input form-input--underline">
+                  <option>5 days</option>
+                  <option>3 days</option>
+                  <option>4 days</option>
+                  <option>7 days</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Notifications -->
+            <div class="card">
+              <h2 class="card__title"><i class="fas fa-bell"></i> Notifications</h2>
+              <div class="toggle-group">
+                <div class="toggle-item">
+                  <span>Period Reminders</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="toggle-item">
+                  <span>Ovulation Alerts</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" checked />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+                <div class="toggle-item">
+                  <span>Daily Tips</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Privacy & Data -->
+            <div class="card">
+              <h2 class="card__title"><i class="fas fa-lock"></i> Privacy & Data</h2>
+              <p style="color: #666; margin-bottom: 16px; font-size: 14px;">Your data is always private and secure. We never share your cycle information without permission.</p>
+              <button class="btn btn--light"><i class="fas fa-download"></i> Download My Data</button>
+              <button class="btn btn--light" style="margin-top: 8px;"><i class="fas fa-trash-alt"></i> Clear All Data</button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ===================================
+         CALENDAR PAGE
+         =================================== -->
+    <section id="calendar-page" class="page-section calendar-page hidden">
+      <div class="app-layout">
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item" data-page="dashboard">
+              <i class="fas fa-home"></i>
+              <span class="nav-label">Home</span>
+            </a>
+            <a href="#" onclick="navigateTo('calendar-page')" class="nav-item active" data-page="calendar">
+              <i class="fas fa-calendar-alt"></i>
+              <span class="nav-label">Calendar</span>
+            </a>
+            <a href="#" onclick="navigateTo('cycle-timeline-page')" class="nav-item" data-page="cycle">
+              <i class="fas fa-circle-notch"></i>
+              <span class="nav-label">Your Cycle</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <i class="fas fa-chart-line"></i>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('articles-page')" class="nav-item" data-page="articles">
+              <i class="fas fa-book-open"></i>
+              <span class="nav-label">Learn</span>
+            </a>
+            <a href="#" onclick="navigateTo('logs-page')" class="nav-item" data-page="logs">
+              <i class="fas fa-history"></i>
+              <span class="nav-label">Logs</span>
+            </a>
+            <a href="#" onclick="navigateTo('partner-page')" class="nav-item" data-page="partner">
+              <i class="fas fa-heart"></i>
+              <span class="nav-label">Partner</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <i class="fas fa-cog"></i>
+              <span class="nav-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <h1 class="page-title"><i class="fas fa-calendar-alt"></i> Your Calendar</h1>
+          <div class="card">
+            <div class="calendar-header">
+              <button class="btn btn--light btn--sm"><i class="fas fa-chevron-left"></i></button>
+              <h2 style="text-align: center; flex: 1;">March 2026</h2>
+              <button class="btn btn--light btn--sm"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="calendar-grid">
+              <div class="calendar-weekday">Sun</div>
+              <div class="calendar-weekday">Mon</div>
+              <div class="calendar-weekday">Tue</div>
+              <div class="calendar-weekday">Wed</div>
+              <div class="calendar-weekday">Thu</div>
+              <div class="calendar-weekday">Fri</div>
+              <div class="calendar-weekday">Sat</div>
+              
+              <!-- Empty cells for alignment -->
+              <div></div>
+              <div class="calendar-date">1</div>
+              <div class="calendar-date">2</div>
+              <div class="calendar-date">3</div>
+              <div class="calendar-date">4</div>
+              <div class="calendar-date">5</div>
+              <div class="calendar-date">6</div>
+              
+              <!-- Period days (1-5) -->
+              <div class="calendar-date period-day phase-menstrual" title="Day 1 - Menstrual">7</div>
+              <div class="calendar-date period-day phase-menstrual" title="Day 2 - Menstrual">8</div>
+              <div class="calendar-date period-day phase-menstrual" title="Day 3 - Menstrual">9</div>
+              <div class="calendar-date period-day phase-menstrual" title="Day 4 - Menstrual">10</div>
+              <div class="calendar-date period-day phase-menstrual" title="Day 5 - Menstrual">11</div>
+              <div class="calendar-date">12</div>
+              <div class="calendar-date">13</div>
+              
+              <!-- Follicular phase -->
+              <div class="calendar-date phase-follicular" title="Follicular Phase">14</div>
+              <div class="calendar-date phase-follicular" title="Follicular Phase">15</div>
+              <div class="calendar-date phase-follicular" title="Follicular Phase">16</div>
+              <div class="calendar-date phase-follicular" title="Ovulation Window">17</div>
+              <div class="calendar-date phase-ovulation fertile" title="Ovulation - High Fertility"><i class="fas fa-egg" style="font-size: 12px;"></i> 18</div>
+              <div class="calendar-date phase-ovulation fertile" title="High Fertility">19</div>
+              <div class="calendar-date phase-ovulation fertile" title="High Fertility">20</div>
+              
+              <div class="calendar-date phase-luteal" title="Luteal Phase">21</div>
+              <div class="calendar-date phase-luteal" title="Luteal Phase">22</div>
+              <div class="calendar-date phase-luteal" title="Luteal Phase">23</div>
+              <div class="calendar-date phase-luteal" title="Luteal Phase">24</div>
+              <div class="calendar-date phase-luteal" title="Luteal Phase">25</div>
+              <div class="calendar-date phase-luteal" title="Luteal Phase">26</div>
+              <div class="calendar-date phase-luteal" title="Luteal Phase">27</div>
+              
+              <div class="calendar-date">28</div>
+              <div class="calendar-date today">29</div>
+              <div class="calendar-date">30</div>
+              <div class="calendar-date">31</div>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="card" style="margin-top: 24px;">
+            <h3 class="card__title">Cycle Phases</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 20px; height: 20px; background: #C4004E; border-radius: 4px;"></div>
+                <span>Menstrual (Period)</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 20px; height: 20px; background: #FF8FA3; border-radius: 4px;"></div>
+                <span>Follicular</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 20px; height: 20px; background: #FFB3C1; border-radius: 4px;"></div>
+                <span>Ovulation</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 20px; height: 20px; background: #E85D8A; border-radius: 4px;"></div>
+                <span>Luteal</span>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ===================================
+         CYCLE TIMELINE PAGE
+         =================================== -->
+    <section id="cycle-timeline-page" class="page-section cycle-timeline-page hidden">
+      <div class="app-layout">
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item" data-page="dashboard">
+              <i class="fas fa-home"></i>
+              <span class="nav-label">Home</span>
+            </a>
+            <a href="#" onclick="navigateTo('calendar-page')" class="nav-item" data-page="calendar">
+              <i class="fas fa-calendar-alt"></i>
+              <span class="nav-label">Calendar</span>
+            </a>
+            <a href="#" onclick="navigateTo('cycle-timeline-page')" class="nav-item active" data-page="cycle">
+              <i class="fas fa-circle-notch"></i>
+              <span class="nav-label">Your Cycle</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <i class="fas fa-chart-line"></i>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('articles-page')" class="nav-item" data-page="articles">
+              <i class="fas fa-book-open"></i>
+              <span class="nav-label">Learn</span>
+            </a>
+            <a href="#" onclick="navigateTo('logs-page')" class="nav-item" data-page="logs">
+              <i class="fas fa-history"></i>
+              <span class="nav-label">Logs</span>
+            </a>
+            <a href="#" onclick="navigateTo('partner-page')" class="nav-item" data-page="partner">
+              <i class="fas fa-heart"></i>
+              <span class="nav-label">Partner</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <i class="fas fa-cog"></i>
+              <span class="nav-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <h1 class="page-title"><i class="fas fa-circle-notch"></i> Your Cycle</h1>
+          
+          <!-- Cycle Progress -->
+          <div class="card">
+            <h2 class="card__title">Cycle Progress</h2>
+            <div class="cycle-progress-bar">
+              <div class="cycle-progress-fill" style="width: 7%;"></div>
+            </div>
+            <p style="text-align: center; margin-top: 12px; color: #666;">Day 2 of 28 • Menstrual Phase</p>
+          </div>
+
+          <!-- Phases Overview -->
+          <div class="card">
+            <h2 class="card__title">Your Cycle Phases</h2>
+            <div class="phases-timeline">
+              <div class="phase-block phase-block--menstrual">
+                <div class="phase-icon"><i class="fas fa-droplet"></i></div>
+                <div class="phase-name">Menstrual</div>
+                <div class="phase-days">Days 1-5 (5 days)</div>
+              </div>
+              <div class="phase-block phase-block--follicular">
+                <div class="phase-icon"><i class="fas fa-leaf"></i></div>
+                <div class="phase-name">Follicular</div>
+                <div class="phase-days">Days 6-13 (8 days)</div>
+              </div>
+              <div class="phase-block phase-block--ovulation">
+                <div class="phase-icon"><i class="fas fa-star"></i></div>
+                <div class="phase-name">Ovulation</div>
+                <div class="phase-days">Days 14-18 (5 days)</div>
+              </div>
+              <div class="phase-block phase-block--luteal">
+                <div class="phase-icon"><i class="fas fa-moon"></i></div>
+                <div class="phase-name">Luteal</div>
+                <div class="phase-days">Days 19-28 (10 days)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phase Details -->
+          <div class="card">
+            <h2 class="card__title"><i class="fas fa-droplet"></i> Menstrual Phase</h2>
+            <p style="color: #666; margin-bottom: 16px;"><strong>Days 1-5</strong> • You're here now</p>
+            
+            <h3 style="font-size: 16px; margin-bottom: 12px; color: #222;">What to Expect</h3>
+            <ul style="color: #666; font-size: 14px; line-height: 1.6;">
+              <li>💧 Light to heavy flow</li>
+              <li>🤕 Possible cramps or discomfort</li>
+              <li>😴 May feel more tired</li>
+              <li>🍫 Possible food cravings</li>
+              <li>💭 Introspective mood</li>
+            </ul>
+
+            <h3 style="font-size: 16px; margin: 20px 0 12px; color: #222;">Self-Care Tips</h3>
+            <ul style="color: #666; font-size: 14px; line-height: 1.6;">
+              <li>✨ Prioritize rest and sleep</li>
+              <li>🍲 Eat iron-rich foods (leafy greens, red meat)</li>
+              <li>💧 Stay hydrated</li>
+              <li>🧘 Gentle movement like yoga or walking</li>
+              <li>🛁 Warm baths or heating pads for comfort</li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ===================================
+         PARTNER SHARING PAGE
+         =================================== -->
+    <section id="partner-page" class="page-section partner-page hidden">
+      <div class="app-layout">
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item" data-page="dashboard">
+              <i class="fas fa-home"></i>
+              <span class="nav-label">Home</span>
+            </a>
+            <a href="#" onclick="navigateTo('calendar-page')" class="nav-item" data-page="calendar">
+              <i class="fas fa-calendar-alt"></i>
+              <span class="nav-label">Calendar</span>
+            </a>
+            <a href="#" onclick="navigateTo('cycle-timeline-page')" class="nav-item" data-page="cycle">
+              <i class="fas fa-circle-notch"></i>
+              <span class="nav-label">Your Cycle</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <i class="fas fa-chart-line"></i>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('articles-page')" class="nav-item" data-page="articles">
+              <i class="fas fa-book-open"></i>
+              <span class="nav-label">Learn</span>
+            </a>
+            <a href="#" onclick="navigateTo('logs-page')" class="nav-item" data-page="logs">
+              <i class="fas fa-history"></i>
+              <span class="nav-label">Logs</span>
+            </a>
+            <a href="#" onclick="navigateTo('partner-page')" class="nav-item active" data-page="partner">
+              <i class="fas fa-heart"></i>
+              <span class="nav-label">Partner</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <i class="fas fa-cog"></i>
+              <span class="nav-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <h1 class="page-title"><i class="fas fa-heart"></i> Partner Access</h1>
+          
+          <div class="card">
+            <h2 class="card__title">Invite Your Partner</h2>
+            <p style="color: #666; margin-bottom: 20px;">Optional. Share your cycle information with a trusted partner. You control exactly what they can see.</p>
+            
+            <div class="form-group">
+              <label class="form-label"><i class="fas fa-envelope"></i> Partner's Email</label>
+              <input type="email" class="form-input form-input--underline" placeholder="partner@example.com" />
+            </div>
+            <button class="btn btn--primary"><i class="fas fa-paper-plane"></i> Send Invite</button>
+            <p style="font-size: 12px; color: #999; margin-top: 12px;">They'll receive an invitation to view your cycle information.</p>
+          </div>
+
+          <!-- Privacy Controls -->
+          <div class="card">
+            <h2 class="card__title"><i class="fas fa-lock"></i> What They Can See</h2>
+            <p style="color: #666; margin-bottom: 20px;">Choose what cycle information to share with your partner.</p>
+            
+            <div class="toggle-group">
+              <div class="toggle-item">
+                <span><i class="fas fa-calendar-alt"></i> Cycle Dates</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <span><i class="fas fa-moon"></i> Current Phase</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <span><i class="fas fa-heart-pulse"></i> Mood Status</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <span><i class="fas fa-pain-head"></i> Symptoms</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="toggle-item">
+                <span><i class="fas fa-notes-medical"></i> Health Notes</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Partners -->
+          <div class="card">
+            <h2 class="card__title">Active Connections</h2>
+            <p style="color: #999; font-size: 14px; padding: 20px; text-align: center; background: #f9f9f9; border-radius: 12px;">
+              <i class="fas fa-info-circle"></i> No active partner connections yet
+            </p>
+          </div>
+
+          <!-- Privacy Statement -->
+          <div class="card" style="background: #fff0f3; border: 1px solid #FFE4EC;">
+            <h3 style="color: #C4004E; margin-bottom: 12px;"><i class="fas fa-shield-alt"></i> Your Privacy is Sacred</h3>
+            <p style="color: #666; font-size: 14px; line-height: 1.6;">
+              We take your privacy seriously. Your cycle information is encrypted and only shared with people you explicitly invite. You can revoke access at any time. It's your body, your data, your choice.
+            </p>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ===================================
+         ENHANCED ARTICLES PAGE
+         =================================== -->
+    <section id="articles-page" class="page-section articles-page hidden">
+      <div class="app-layout">
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item" data-page="dashboard">
+              <i class="fas fa-home"></i>
+              <span class="nav-label">Home</span>
+            </a>
+            <a href="#" onclick="navigateTo('calendar-page')" class="nav-item" data-page="calendar">
+              <i class="fas fa-calendar-alt"></i>
+              <span class="nav-label">Calendar</span>
+            </a>
+            <a href="#" onclick="navigateTo('cycle-timeline-page')" class="nav-item" data-page="cycle">
+              <i class="fas fa-circle-notch"></i>
+              <span class="nav-label">Your Cycle</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <i class="fas fa-chart-line"></i>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('articles-page')" class="nav-item active" data-page="articles">
+              <i class="fas fa-book-open"></i>
+              <span class="nav-label">Learn</span>
+            </a>
+            <a href="#" onclick="navigateTo('logs-page')" class="nav-item" data-page="logs">
+              <i class="fas fa-history"></i>
+              <span class="nav-label">Logs</span>
+            </a>
+            <a href="#" onclick="navigateTo('partner-page')" class="nav-item" data-page="partner">
+              <i class="fas fa-heart"></i>
+              <span class="nav-label">Partner</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <i class="fas fa-cog"></i>
+              <span class="nav-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <h1 class="page-title"><i class="fas fa-book-open"></i> Learn About Your Cycle</h1>
+          
+          <div class="articles-grid">
+            <div class="article-card">
+              <div class="article-card__header">
+                <i class="fas fa-dna"></i>
+              </div>
+              <h3 class="article-card__title">Understanding Ovulation</h3>
+              <p class="article-card__excerpt">Learn what happens during your ovulation window and how to recognize the signs your body is sending.</p>
+              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="article-card">
+              <div class="article-card__header">
+                <i class="fas fa-spa"></i>
+              </div>
+              <h3 class="article-card__title">Nutrition & Your Cycle</h3>
+              <p class="article-card__excerpt">Discover how nutrition changes through your cycle and which foods support each phase.</p>
+              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="article-card">
+              <div class="article-card__header">
+                <i class="fas fa-brain"></i>
+              </div>
+              <h3 class="article-card__title">Mood & Hormones</h3>
+              <p class="article-card__excerpt">Understanding the connection between your cycle and emotional wellbeing throughout the month.</p>
+              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="article-card">
+              <div class="article-card__header">
+                <i class="fas fa-person-hiking"></i>
+              </div>
+              <h3 class="article-card__title">Exercise & Your Cycle</h3>
+              <p class="article-card__excerpt">Train smarter by syncing your workouts with your cycle phases for optimal performance.</p>
+              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="article-card">
+              <div class="article-card__header">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h3 class="article-card__title">Intimacy & Your Cycle</h3>
+              <p class="article-card__excerpt">A guide to communicating your needs and desires throughout your cycle with your partner.</p>
+              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="article-card">
+              <div class="article-card__header">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3 class="article-card__title">Natural Remedies</h3>
+              <p class="article-card__excerpt">Explore herbal and natural approaches to managing period symptoms and supporting wellness.</p>
+              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <!-- ===================================
+         LOGS PAGE (HISTORY)
+         =================================== -->
+    <section id="logs-page" class="page-section logs-page hidden">
+      <div class="app-layout">
+        <aside class="sidebar">
+          <div class="sidebar__header">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" class="sidebar__logo">
+          </div>
+          <nav class="sidebar__nav">
+            <a href="#" onclick="navigateTo('dashboard-page')" class="nav-item" data-page="dashboard">
+              <i class="fas fa-home"></i>
+              <span class="nav-label">Home</span>
+            </a>
+            <a href="#" onclick="navigateTo('calendar-page')" class="nav-item" data-page="calendar">
+              <i class="fas fa-calendar-alt"></i>
+              <span class="nav-label">Calendar</span>
+            </a>
+            <a href="#" onclick="navigateTo('cycle-timeline-page')" class="nav-item" data-page="cycle">
+              <i class="fas fa-circle-notch"></i>
+              <span class="nav-label">Your Cycle</span>
+            </a>
+            <a href="#" onclick="navigateTo('insights-page')" class="nav-item" data-page="insights">
+              <i class="fas fa-chart-line"></i>
+              <span class="nav-label">Insights</span>
+            </a>
+            <a href="#" onclick="navigateTo('articles-page')" class="nav-item" data-page="articles">
+              <i class="fas fa-book-open"></i>
+              <span class="nav-label">Learn</span>
+            </a>
+            <a href="#" onclick="navigateTo('logs-page')" class="nav-item active" data-page="logs">
+              <i class="fas fa-history"></i>
+              <span class="nav-label">Logs</span>
+            </a>
+            <a href="#" onclick="navigateTo('partner-page')" class="nav-item" data-page="partner">
+              <i class="fas fa-heart"></i>
+              <span class="nav-label">Partner</span>
+            </a>
+            <a href="#" onclick="navigateTo('profile-page')" class="nav-item" data-page="profile">
+              <i class="fas fa-cog"></i>
+              <span class="nav-label">Settings</span>
+            </a>
+          </nav>
+          <div class="sidebar__footer">
+            <button class="btn btn--light btn--sm" onclick="navigateTo('hero-page')">Logout</button>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <h1 class="page-title"><i class="fas fa-history"></i> Your Logs</h1>
+          
+          <div class="card">
+            <h2 class="card__title">Recent Entries</h2>
+            <div class="logs-timeline">
+              <div class="log-entry">
+                <div class="log-date">March 8, 2026</div>
+                <div class="log-content">
+                  <p><strong>Period Started</strong></p>
+                  <p style="font-size: 14px; color: #666;">Flow: Heavy | Mood: Introspective | Symptoms: Cramps</p>
+                </div>
+              </div>
+              <div class="log-entry">
+                <div class="log-date">March 5, 2026</div>
+                <div class="log-content">
+                  <p><strong>Symptoms Logged</strong></p>
+                  <p style="font-size: 14px; color: #666;">Fatigue, Tender Breasts, Mood Changes</p>
+                </div>
+              </div>
+              <div class="log-entry">
+                <div class="log-date">February 28, 2026</div>
+                <div class="log-content">
+                  <p><strong>Period Ended</strong></p>
+                  <p style="font-size: 14px; color: #666;">Total Duration: 5 days</p>
+                </div>
+              </div>
+              <div class="log-entry">
+                <div class="log-date">February 18, 2026</div>
+                <div class="log-content">
+                  <p><strong>Ovulation Window</strong></p>
+                  <p style="font-size: 14px; color: #666;">Fertile days: Feb 17-21</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="card__title">Statistics</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;">
+              <div style="text-align: center; padding: 16px; background: #f9f9f9; border-radius: 12px;">
+                <div style="font-size: 28px; font-weight: bold; color: #C4004E;">5</div>
+                <div style="color: #666; font-size: 14px; margin-top: 4px;">Avg Period Length</div>
+              </div>
+              <div style="text-align: center; padding: 16px; background: #f9f9f9; border-radius: 12px;">
+                <div style="font-size: 28px; font-weight: bold; color: #C4004E;">28</div>
+                <div style="color: #666; font-size: 14px; margin-top: 4px;">Cycle Length</div>
+              </div>
+              <div style="text-align: center; padding: 16px; background: #f9f9f9; border-radius: 12px;">
+                <div style="font-size: 28px; font-weight: bold; color: #C4004E;">12</div>
+                <div style="color: #666; font-size: 14px; margin-top: 4px;">Cycles Tracked</div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+
+  </div> <!-- End app-container -->
+
+  <!-- Scripts -->
+  <script src="scripts.js"></script>
+</body>
+</html>
