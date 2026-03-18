@@ -17,6 +17,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#hero-page">Skip to main content</a>
   <!-- Page Container -->
   <div id="app-container" class="app-container">
 
@@ -29,29 +30,29 @@
       <nav class="navbar">
         <div class="navbar__container">
           <div class="navbar__logo">
-            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" width="18" height="8">
+            <img src="images/frau rot.jpg" alt="FRAU ROT Logo" width="44" height="44">
             
           </div>
           
           <div class="navbar__menu">
-            <a href="#" class="navbar__link"><i class="fas fa-home"></i> Home</a>
-            <a href="#" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
-            <a href="#" class="navbar__link"><i class="fas fa-star"></i> Features</a>
-            <a href="#" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
-            <a href="#" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
-            <a href="#" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#hero-page" class="navbar__link" data-scroll-target="hero-page"><i class="fas fa-home"></i> Home</a>
+            <a href="#landing-about" class="navbar__link" data-scroll-target="landing-about"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#landing-features" class="navbar__link" data-scroll-target="landing-features"><i class="fas fa-star"></i> Features</a>
+            <a href="#landing-blog" class="navbar__link" data-scroll-target="landing-blog"><i class="fas fa-book"></i> Blog</a>
+            <a href="#landing-faq" class="navbar__link" data-scroll-target="landing-faq"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="#landing-contact" class="navbar__link" data-scroll-target="landing-contact"><i class="fas fa-envelope"></i> Contact</a>
           </div>
 
           <div class="navbar__actions">
-            <button class="navbar__btn navbar__btn--outline" onclick="navigateTo('login-page')">
+            <button type="button" class="navbar__btn navbar__btn--outline" onclick="navigateTo('login-page')">
               <i class="fas fa-sign-in-alt"></i> Sign In
             </button>
-            <button class="navbar__btn navbar__btn--primary" onclick="navigateTo('signup-page')">
+            <button type="button" class="navbar__btn navbar__btn--primary" onclick="navigateTo('signup-page')">
               <i class="fas fa-user-plus"></i> Sign Up
             </button>
           </div>
 
-          <button class="navbar__toggle" id="navbar-toggle">
+          <button class="navbar__toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -64,11 +65,80 @@
         <p class="hero__subtitle">Guided By Nature. Powered By You</p>
         
         <div class="hero__buttons">
-          <button class="btn btn--primary" onclick="navigateTo('signup-page')">Sign Up</button>
-          <button class="btn btn--secondary" onclick="navigateTo('login-page')">Sign In</button>
+          <button type="button" class="btn btn--primary" onclick="navigateTo('signup-page')">Sign Up</button>
+          <button type="button" class="btn btn--secondary" onclick="navigateTo('login-page')">Sign In</button>
         </div>
 
         <p class="hero__cta-text">Already have an account? <a href="#" onclick="navigateTo('login-page')" class="hero__link">Sign In</a></p>
+      </div>
+
+      <div class="landing-sections">
+        <section id="landing-about" class="landing-block">
+          <p class="landing-kicker">About FRAU ROT</p>
+          <h2 class="landing-heading">A warm, intelligent menstrual wellness companion</h2>
+          <p class="landing-copy">FRAU ROT blends cycle science with thoughtful design to help you track, understand, and act on your patterns with confidence.</p>
+        </section>
+
+        <section id="landing-features" class="landing-block">
+          <p class="landing-kicker">Features</p>
+          <h2 class="landing-heading">Built for clarity, care, and consistency</h2>
+          <div class="landing-feature-grid">
+            <article class="landing-feature-card">
+              <h3>Phase Intelligence</h3>
+              <p>Visual cycle phases with meaningful predictions and practical guidance.</p>
+            </article>
+            <article class="landing-feature-card">
+              <h3>Daily Insight Logging</h3>
+              <p>Track mood, symptoms, flow, and notes to uncover personal patterns.</p>
+            </article>
+            <article class="landing-feature-card">
+              <h3>Partner & Privacy Controls</h3>
+              <p>Share intentionally with clear controls while keeping your data protected.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="landing-blog" class="landing-block">
+          <p class="landing-kicker">Blog</p>
+          <h2 class="landing-heading">Evidence-backed articles, made easy to apply</h2>
+          <p class="landing-copy">Explore professional content on cycle health, pain management, and nutrition directly in your dashboard.</p>
+          <button type="button" class="btn btn--light landing-inline-btn" onclick="navigateTo('articles-page')">
+            <i class="fas fa-book-open"></i> Explore Articles
+          </button>
+        </section>
+
+        <section id="landing-faq" class="landing-block">
+          <p class="landing-kicker">FAQ</p>
+          <h2 class="landing-heading">Answers to common questions</h2>
+          <div class="landing-faq-list">
+            <div class="landing-faq-item">
+              <h3>Is my data private?</h3>
+              <p>Yes. Your logs and profile details remain private unless you explicitly share them.</p>
+            </div>
+            <div class="landing-faq-item">
+              <h3>Can I start with no history?</h3>
+              <p>Absolutely. FRAU ROT is built to guide first-time users from day one.</p>
+            </div>
+            <div class="landing-faq-item">
+              <h3>Do predictions adapt over time?</h3>
+              <p>Yes. As you log consistently, the app becomes better aligned to your cycle patterns.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="landing-contact" class="landing-block landing-block--contact">
+          <p class="landing-kicker">Contact</p>
+          <h2 class="landing-heading">Need support or want to collaborate?</h2>
+          <p class="landing-copy">Reach us at <a href="mailto:support@fraurot.com">support@fraurot.com</a> and we'll be glad to help.</p>
+          <div class="landing-contact-actions">
+            <button type="button" class="btn btn--primary" onclick="navigateTo('signup-page')">
+              <i class="fas fa-user-plus"></i> Start Free
+            </button>
+            <button type="button" class="btn btn--secondary" onclick="navigateTo('login-page')">
+              <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+          </div>
+        </section>
       </div>
     </section>
 
@@ -99,7 +169,7 @@
             </button>
           </div>
 
-          <button class="navbar__toggle" id="navbar-toggle">
+          <button class="navbar__toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -114,7 +184,7 @@
             <p class="section-subtitle">Create your account and start your wellness journey</p>
           </div>
           <div class="section-banner__image">
-            <img src="images/vector of woc.jpg" alt="Women illustration">
+            <img src="images/meditation.jpg" alt="Woman meditating for period wellness">
           </div>
         </div>
 
@@ -123,18 +193,18 @@
 
           <form class="form" id="signup-form">
             <div class="form-group">
-              <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
-              <input type="email" class="form-input form-input--underline" placeholder="Email address" required/>
+              <label class="form-label" for="signup-email"><i class="fas fa-envelope"></i> Email</label>
+              <input id="signup-email" type="email" class="form-input form-input--underline" placeholder="Email address" autocomplete="email" required/>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label"><i class="fas fa-lock"></i> Password</label>
-                <input type="password" class="form-input form-input--underline" placeholder="Password" required/>
+                <label class="form-label" for="signup-password"><i class="fas fa-lock"></i> Password</label>
+                <input id="signup-password" type="password" class="form-input form-input--underline" placeholder="Password" autocomplete="new-password" required/>
               </div>
               <div class="form-group">
-                <label class="form-label"><i class="fas fa-lock"></i> Confirm</label>
-                <input type="password" class="form-input form-input--underline" placeholder="Confirm Password" required/>
+                <label class="form-label" for="signup-password-confirm"><i class="fas fa-lock"></i> Confirm</label>
+                <input id="signup-password-confirm" type="password" class="form-input form-input--underline" placeholder="Confirm Password" autocomplete="new-password" required/>
               </div>
             </div>
 
@@ -142,7 +212,7 @@
               <button type="button" class="btn btn--light">
                 <i class="fab fa-google"></i> Continue with Google
               </button>
-              <button type="submit" class="btn btn--primary" onclick="navigateTo('welcome-page')">Create Account</button>
+              <button type="submit" class="btn btn--primary">Create Account</button>
             </div>
           </form>
 
@@ -215,7 +285,7 @@
             </button>
           </div>
 
-          <button class="navbar__toggle" id="navbar-toggle">
+          <button class="navbar__toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -238,12 +308,12 @@
           <form class="form" id="login-form">
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label"><i class="fas fa-envelope"></i> Email</label>
-                <input type="email" class="form-input form-input--underline" placeholder="Email address" required/>
+                <label class="form-label" for="login-email"><i class="fas fa-envelope"></i> Email</label>
+                <input id="login-email" type="email" class="form-input form-input--underline" placeholder="Email address" autocomplete="email" required/>
               </div>
               <div class="form-group">
-                <label class="form-label"><i class="fas fa-lock"></i> Password</label>
-                <input type="password" class="form-input form-input--underline" placeholder="Password" required/>
+                <label class="form-label" for="login-password"><i class="fas fa-lock"></i> Password</label>
+                <input id="login-password" type="password" class="form-input form-input--underline" placeholder="Password" autocomplete="current-password" required/>
               </div>
             </div>
 
@@ -255,19 +325,19 @@
             </div>
 
             <div class="form-buttons">
-              <button type="button" class="btn btn--apple">
+              <button type="button" class="btn btn--apple" id="login-apple-btn">
                 <i class="fab fa-apple"></i> Sign In with Apple
               </button>
-              <button type="button" class="btn btn--light">
+              <button type="button" class="btn btn--light" id="login-google-btn">
                 <i class="fab fa-google"></i> Continue with Google
               </button>
-              <button type="submit" class="btn btn--primary" onclick="navigateTo('welcome-page')">Sign In</button>
+              <button type="submit" class="btn btn--primary" id="login-submit-btn">Sign In</button>
             </div>
           </form>
 
           <div class="login-footer">
             <a href="#" class="link"><i class="fas fa-key"></i> Forgot your password?</a>
-            <span class="separator">•</span>
+            <span class="separator">&bull;</span>
             <a href="#" onclick="navigateTo('signup-page')" class="link"><i class="fas fa-user-plus"></i> Create account</a>
           </div>
         </div>
@@ -565,7 +635,7 @@
             
             <div class="articles-grid">
               <article class="article-card">
-                <div class="article-image" style="background: linear-gradient(135deg, #C4004E, #FF8FA3);"></div>
+                <div class="article-image article-image--cycle"></div>
                 <div class="article-content">
                   <h3 class="article-title"><i class="fas fa-dna"></i> Understanding Your Cycle</h3>
                   <p class="article-description">Learn about the 4 phases of your menstrual cycle and what happens in each phase.</p>
@@ -574,7 +644,7 @@
               </article>
 
               <article class="article-card">
-                <div class="article-image" style="background: linear-gradient(135deg, #A80243, #E85D8A);"></div>
+                <div class="article-image article-image--pain"></div>
                 <div class="article-content">
                   <h3 class="article-title"><i class="fas fa-spa"></i> Managing Period Pain</h3>
                   <p class="article-description">Effective strategies and natural remedies for managing menstrual cramps.</p>
@@ -583,7 +653,7 @@
               </article>
 
               <article class="article-card">
-                <div class="article-image" style="background: linear-gradient(135deg, #BD0455, #FF7FB8);"></div>
+                <div class="article-image article-image--nutrition"></div>
                 <div class="article-content">
                   <h3 class="article-title"><i class="fas fa-apple"></i> Nutrition & Your Cycle</h3>
                   <p class="article-description">Discover the best foods to eat during each phase of your cycle.</p>
@@ -721,8 +791,8 @@
 
             <form class="form" id="add-period-form">
               <div class="form-group">
-                <label class="form-label"><i class="fas fa-calendar-days"></i> Date</label>
-                <input type="date" class="form-input" required>
+                <label class="form-label" for="period-date"><i class="fas fa-calendar-days"></i> Date</label>
+                <input id="period-date" type="date" class="form-input" required>
               </div>
 
               <div class="form-group">
@@ -922,9 +992,9 @@
           <h1 class="page-title"><i class="fas fa-calendar-alt"></i> Your Calendar</h1>
           <div class="card">
             <div class="calendar-header">
-              <button class="btn btn--light btn--sm"><i class="fas fa-chevron-left"></i></button>
+              <button class="btn btn--light btn--sm" type="button" aria-label="Previous month"><i class="fas fa-chevron-left"></i></button>
               <h2 style="text-align: center; flex: 1;">March 2026</h2>
-              <button class="btn btn--light btn--sm"><i class="fas fa-chevron-right"></i></button>
+              <button class="btn btn--light btn--sm" type="button" aria-label="Next month"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="calendar-grid">
               <div class="calendar-weekday">Sun</div>
@@ -1465,3 +1535,6 @@
   <script src="scripts.js"></script>
 </body>
 </html>
+
+
+

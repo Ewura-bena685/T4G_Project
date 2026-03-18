@@ -8,26 +8,61 @@
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-  const navbarToggle = document.getElementById('navbar-toggle');
-  const navbarMenu = document.querySelector('.navbar__menu');
-  
-  if (navbarToggle) {
-    navbarToggle.addEventListener('click', function() {
-      navbarMenu.classList.toggle('active');
-      navbarToggle.classList.toggle('active');
-    });
-  }
+  // Multiple navbars exist across sections, so pair each toggle with its own menu.
+  const navbars = document.querySelectorAll('.navbar');
+  navbars.forEach(navbar => {
+    const navbarToggle = navbar.querySelector('.navbar__toggle');
+    const navbarMenu = navbar.querySelector('.navbar__menu');
 
-  // Close menu when a link is clicked
-  if (navbarMenu) {
-    const navLinks = navbarMenu.querySelectorAll('.navbar__link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        navbarMenu.classList.remove('active');
-        navbarToggle.classList.remove('active');
+    if (navbarToggle && navbarMenu) {
+      navbarToggle.addEventListener('click', function() {
+        const isOpen = navbarMenu.classList.toggle('active');
+        navbarToggle.classList.toggle('active', isOpen);
+        navbarToggle.setAttribute('aria-expanded', String(isOpen));
       });
+
+      const navLinks = navbarMenu.querySelectorAll('.navbar__link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          navbarMenu.classList.remove('active');
+          navbarToggle.classList.remove('active');
+          navbarToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+
+  // Keep action links from jumping to top when they are used as JS triggers.
+  document.querySelectorAll('a[href="#"][onclick]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
     });
-  }
+  });
+
+  // Landing page smooth-scrolling for in-page navigation.
+  document.querySelectorAll('[data-scroll-target]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('data-scroll-target');
+      const target = targetId ? document.getElementById(targetId) : null;
+      if (!target) return;
+
+      e.preventDefault();
+      const heroPage = document.getElementById('hero-page');
+      if (heroPage && heroPage.classList.contains('hidden')) {
+        navigateTo('hero-page');
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+        return;
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Prevent unexpected submit behavior from buttons without an explicit type.
+  document.querySelectorAll('button:not([type])').forEach(button => {
+    button.type = 'button';
+  });
 });
 
 // ============================================
@@ -59,6 +94,7 @@ function updateActiveNav(pageId) {
     'calendar-page': 'calendar',
     'cycle-timeline-page': 'cycle',
     'insights-page': 'insights',
+    'reminders-page': 'reminders',
     'articles-page': 'articles',
     'logs-page': 'logs',
     'partner-page': 'partner',
@@ -108,9 +144,13 @@ document.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       const email = this.querySelector('input[type="email"]').value;
       const passwords = this.querySelectorAll('input[type="password"]');
-      
+
       if (passwords[0].value !== passwords[1].value) {
         alert('Passwords do not match!');
+        return;
+      }
+      if (!email.trim() || !passwords[0].value.trim() || !passwords[1].value.trim()) {
+        alert('Please complete all sign up fields.');
         return;
       }
 
@@ -126,6 +166,12 @@ document.addEventListener('DOMContentLoaded', function() {
     loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const email = this.querySelector('input[type="email"]').value;
+      const password = this.querySelector('input[type="password"]').value;
+
+      if (!email.trim() || !password.trim()) {
+        alert('Please enter both email and password.');
+        return;
+      }
       
       console.log('Login:', email);
       alert('Welcome back!');
@@ -158,6 +204,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Form input focus effects
   setupFormInteractions();
+
+  // A11y pass for controls that are visually labeled but missing programmatic labels
+  enhanceAccessibility();
 });
 
 // ============================================
@@ -172,6 +221,10 @@ function setupOAuthHandlers() {
       e.preventDefault();
       console.log('Google OAuth initiated');
       alert('Redirecting to Google login...');
+
+      const pageId = this.closest('.page-section')?.id;
+      if (pageId === 'login-page') navigateTo('dashboard-page');
+      if (pageId === 'signup-page') navigateTo('welcome-page');
     });
   });
 
@@ -182,6 +235,10 @@ function setupOAuthHandlers() {
       e.preventDefault();
       console.log('Apple OAuth initiated');
       alert('Redirecting to Apple login...');
+
+      const pageId = this.closest('.page-section')?.id;
+      if (pageId === 'login-page') navigateTo('dashboard-page');
+      if (pageId === 'signup-page') navigateTo('welcome-page');
     });
   });
 }
@@ -203,25 +260,52 @@ function setupFormInteractions() {
   });
 }
 
+function enhanceAccessibility() {
+  // Associate visible form labels with controls when id/for are missing.
+  const groups = document.querySelectorAll('.form-group');
+  groups.forEach((group, index) => {
+    const label = group.querySelector('label');
+    const control = group.querySelector('input, select, textarea');
+    if (!label || !control) return;
+
+    if (!control.id) {
+      control.id = `field-${index + 1}`;
+    }
+    if (!label.getAttribute('for')) {
+      label.setAttribute('for', control.id);
+    }
+  });
+
+  // Provide accessible names for toggle checkboxes from nearby text.
+  const toggleItems = document.querySelectorAll('.toggle-item');
+  toggleItems.forEach((item, index) => {
+    const text = item.querySelector('span');
+    const checkbox = item.querySelector('input[type="checkbox"]');
+    if (!checkbox) return;
+
+    if (!checkbox.id) {
+      checkbox.id = `toggle-option-${index + 1}`;
+    }
+    if (!checkbox.getAttribute('aria-label') && text) {
+      checkbox.setAttribute('aria-label', text.textContent.trim());
+    }
+  });
+}
+
 // ============================================
 // KEYBOARD NAVIGATION
 // ============================================
 
 document.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    const activeElement = document.activeElement;
+  if (event.key !== 'Enter') return;
 
-    if (activeElement.tagName === 'BUTTON' && !activeElement.hasAttribute('disabled')) {
-      activeElement.click();
-    }
+  const activeElement = document.activeElement;
+  if (!activeElement) return;
 
-    if (activeElement.tagName === 'INPUT' && activeElement.form) {
-      const inputs = Array.from(activeElement.form.querySelectorAll('input'));
-      const isLastInput = inputs[inputs.length - 1] === activeElement;
-      if (isLastInput && !event.ctrlKey) {
-        activeElement.form.submit();
-      }
-    }
+  // Chips are button-like controls; allow Enter to activate them consistently.
+  if (activeElement.classList && activeElement.classList.contains('chip')) {
+    event.preventDefault();
+    activeElement.click();
   }
 });
 
