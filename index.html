@@ -401,7 +401,7 @@
         <h2 class="onboarding-question"><i class="fas fa-calendar-alt"></i> What is your typical cycle length?</h2>
         <p class="onboarding-hint"><i class="fas fa-info-circle"></i> This helps us predict your cycle phases</p>
         
-        <div class="chips-container">
+        <div class="chips-container" id="cycle-length-chips">
           <button class="chip" onclick="selectChip(this, 'cycle-length', 21)">21 days</button>
           <button class="chip" onclick="selectChip(this, 'cycle-length', 24)">24 days</button>
           <button class="chip" onclick="selectChip(this, 'cycle-length', 28)">28 days</button>
@@ -452,7 +452,7 @@
         <!-- Main Content -->
         <main class="main-content">
           <div class="dashboard-header">
-            <h1 class="page-title"><i class="fas fa-home"></i> Welcome Back, Ewura</h1>
+            <h1 class="page-title"><i class="fas fa-home"></i> Welcome Back, <span id="dashboard-welcome-name">Ewura</span></h1>
             <p class="page-subtitle">Your cycle, your insights, your power 💜</p>
           </div>
 
@@ -867,26 +867,30 @@
             <div class="card">
               <h2 class="card__title"><i class="fas fa-user"></i> Account Information</h2>
               <div class="form-group">
-                <label class="form-label">Name</label>
-                <input type="text" class="form-input form-input--underline" value="Ewura" />
+                <label class="form-label" for="profile-name">Name</label>
+                <input id="profile-name" type="text" class="form-input form-input--underline" value="" />
               </div>
               <div class="form-group">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-input form-input--underline" value="ewura@example.com" />
+                <label class="form-label" for="profile-email">Email</label>
+                <input id="profile-email" type="email" class="form-input form-input--underline" value="" />
               </div>
-              <button class="btn btn--primary" style="margin-top: 16px;"><i class="fas fa-save"></i> Save Changes</button>
+              <button id="profile-save-btn" class="btn btn--primary" style="margin-top: 16px;"><i class="fas fa-save"></i> Save Changes</button>
             </div>
 
             <!-- Cycle Settings -->
             <div class="card">
               <h2 class="card__title"><i class="fas fa-cog"></i> Cycle Preferences</h2>
               <div class="form-group">
-                <label class="form-label">Average Cycle Length</label>
-                <select class="form-input form-input--underline">
-                  <option>28 days</option>
-                  <option>26 days</option>
-                  <option>30 days</option>
-                  <option>32 days</option>
+                <label class="form-label" for="profile-cycle-length">Average Cycle Length</label>
+                <select id="profile-cycle-length" class="form-input form-input--underline">
+                  <option value="21">21 days</option>
+                  <option value="24">24 days</option>
+                  <option value="26">26 days</option>
+                  <option value="28">28 days</option>
+                  <option value="30">30 days</option>
+                  <option value="32">32 days</option>
+                  <option value="35">35 days</option>
+                  <option value="40">40 days</option>
                 </select>
               </div>
               <div class="form-group">
@@ -992,58 +996,12 @@
           <h1 class="page-title"><i class="fas fa-calendar-alt"></i> Your Calendar</h1>
           <div class="card">
             <div class="calendar-header">
-              <button class="btn btn--light btn--sm" type="button" aria-label="Previous month"><i class="fas fa-chevron-left"></i></button>
-              <h2 style="text-align: center; flex: 1;">March 2026</h2>
-              <button class="btn btn--light btn--sm" type="button" aria-label="Next month"><i class="fas fa-chevron-right"></i></button>
+              <button class="btn btn--light btn--sm" type="button" aria-label="Previous month" onclick="goToPreviousMonth()"><i class="fas fa-chevron-left"></i></button>
+              <h2 id="calendar-month-title" style="text-align: center; flex: 1;">March 2026</h2>
+              <button class="btn btn--light btn--sm" type="button" aria-label="Next month" onclick="goToNextMonth()"><i class="fas fa-chevron-right"></i></button>
             </div>
-            <div class="calendar-grid">
-              <div class="calendar-weekday">Sun</div>
-              <div class="calendar-weekday">Mon</div>
-              <div class="calendar-weekday">Tue</div>
-              <div class="calendar-weekday">Wed</div>
-              <div class="calendar-weekday">Thu</div>
-              <div class="calendar-weekday">Fri</div>
-              <div class="calendar-weekday">Sat</div>
-              
-              <!-- Empty cells for alignment -->
-              <div></div>
-              <div class="calendar-date">1</div>
-              <div class="calendar-date">2</div>
-              <div class="calendar-date">3</div>
-              <div class="calendar-date">4</div>
-              <div class="calendar-date">5</div>
-              <div class="calendar-date">6</div>
-              
-              <!-- Period days (1-5) -->
-              <div class="calendar-date period-day phase-menstrual" title="Day 1 - Menstrual">7</div>
-              <div class="calendar-date period-day phase-menstrual" title="Day 2 - Menstrual">8</div>
-              <div class="calendar-date period-day phase-menstrual" title="Day 3 - Menstrual">9</div>
-              <div class="calendar-date period-day phase-menstrual" title="Day 4 - Menstrual">10</div>
-              <div class="calendar-date period-day phase-menstrual" title="Day 5 - Menstrual">11</div>
-              <div class="calendar-date">12</div>
-              <div class="calendar-date">13</div>
-              
-              <!-- Follicular phase -->
-              <div class="calendar-date phase-follicular" title="Follicular Phase">14</div>
-              <div class="calendar-date phase-follicular" title="Follicular Phase">15</div>
-              <div class="calendar-date phase-follicular" title="Follicular Phase">16</div>
-              <div class="calendar-date phase-follicular" title="Ovulation Window">17</div>
-              <div class="calendar-date phase-ovulation fertile" title="Ovulation - High Fertility"><i class="fas fa-egg" style="font-size: 12px;"></i> 18</div>
-              <div class="calendar-date phase-ovulation fertile" title="High Fertility">19</div>
-              <div class="calendar-date phase-ovulation fertile" title="High Fertility">20</div>
-              
-              <div class="calendar-date phase-luteal" title="Luteal Phase">21</div>
-              <div class="calendar-date phase-luteal" title="Luteal Phase">22</div>
-              <div class="calendar-date phase-luteal" title="Luteal Phase">23</div>
-              <div class="calendar-date phase-luteal" title="Luteal Phase">24</div>
-              <div class="calendar-date phase-luteal" title="Luteal Phase">25</div>
-              <div class="calendar-date phase-luteal" title="Luteal Phase">26</div>
-              <div class="calendar-date phase-luteal" title="Luteal Phase">27</div>
-              
-              <div class="calendar-date">28</div>
-              <div class="calendar-date today">29</div>
-              <div class="calendar-date">30</div>
-              <div class="calendar-date">31</div>
+            <div id="calendar-grid-container">
+              <!-- Calendar will be generated here -->
             </div>
           </div>
 
@@ -1476,7 +1434,7 @@
           
           <div class="card">
             <h2 class="card__title">Recent Entries</h2>
-            <div class="logs-timeline">
+            <div id="logs-timeline" class="logs-timeline">
               <div class="log-entry">
                 <div class="log-date">March 8, 2026</div>
                 <div class="log-content">
