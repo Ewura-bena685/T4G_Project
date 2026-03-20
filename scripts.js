@@ -170,6 +170,7 @@ function renderCurrentUser() {
 
   hydrateCycleLengthSelection();
   renderLogs();
+  updateDailyCycleWidgets();
 }
 
 function hydrateCycleLengthSelection() {
@@ -211,6 +212,62 @@ function renderLogs() {
   `).join('');
 }
 
+function updateDailyCycleWidgets() {
+  const user = getCurrentUser();
+  if (!user) return;
+
+  const { cycleLength, lastPeriodDate } = getUserCycleInfo();
+  const today = new Date();
+  const dayInCycle = getDayInCycle(today, lastPeriodDate, cycleLength);
+  const phaseInfo = dayInCycle ? getPhaseInfo(dayInCycle, cycleLength) : { phase: 'unknown', label: 'No data', fertile: false };
+
+  const badge = document.getElementById('today-phase-badge');
+  const info = document.getElementById('today-info');
+  const subtext = document.getElementById('today-subtext');
+  const summaryPhase = document.getElementById('summary-phase');
+  const summaryDay = document.getElementById('summary-day');
+  const summaryNext = document.getElementById('summary-next-event');
+
+  if (badge) {
+    badge.textContent = phaseInfo.label;
+    badge.className = `phase-badge phase-badge--${phaseInfo.phase}`;
+  }
+
+  if (info) {
+    if (dayInCycle === null) {
+      info.textContent = 'No period entry yet. Log your cycle to get personalized insights.';
+    } else {
+      info.textContent = `You're on day ${dayInCycle} of a ${cycleLength}-day cycle`;
+    }
+  }
+
+  if (subtext) {
+    const fertilityText = getFertilityPrediction(dayInCycle, cycleLength);
+    const moodText = getFeelGoodMessage(phaseInfo);
+    subtext.textContent = `${fertilityText}. ${moodText}`;
+  }
+
+  if (summaryPhase) {
+    summaryPhase.textContent = phaseInfo.label;
+  }
+
+  if (summaryDay) {
+    summaryDay.textContent = dayInCycle ? `${dayInCycle} of ${cycleLength}` : `N/A`;
+  }
+
+  if (summaryNext) {
+    if (!dayInCycle) {
+      summaryNext.textContent = 'Add a period log to start predictions.';
+    } else {
+      const targetOvulationDay = 14;
+      let daysUntil = targetOvulationDay - dayInCycle;
+      if (daysUntil < 0) daysUntil = cycleLength - dayInCycle + targetOvulationDay;
+      summaryNext.textContent = phaseInfo.phase === 'ovulation' ? 'Ovulation is happening now!' : `Ovulation in ${daysUntil} day${daysUntil === 1 ? '' : 's'}`;
+    }
+  }
+}
+
+
 // ============================================
 // CALENDAR GENERATION
 // ============================================
@@ -246,6 +303,47 @@ function getPhaseInfo(dateInCycle, cycleLength) {
   } else {
     return { phase: 'luteal', label: 'Luteal Phase', fertile: false };
   }
+}
+
+function getFertilityPrediction(dayInCycle, cycleLength) {
+  if (dayInCycle === null) return 'Unknown';
+
+  if (dayInCycle >= 12 && dayInCycle <= 16) {
+    return 'High fertility window';
+  }
+  if (dayInCycle >= 9 && dayInCycle <= 11) {
+    return 'Approaching fertile window';
+  }
+  return 'Low fertility';
+}
+
+function getFeelGoodMessage(phaseInfo) {
+  const messages = {
+    menstrual: [
+      'Today is your day to notice your needs and go gentle with yourself.',
+      'Cozy up with a warm drink and soothing movement. You are supported.',
+      'It’s okay to pause. Your body is doing important work.',
+    ],
+    follicular: [
+      'Your energy is rising. Take on a creative challenge and celebrate small wins.',
+      'Try something new today—your mind is ready to bloom.',
+      'Connect with someone who makes you feel inspired.',
+    ],
+    ovulation: [
+      'You are glowing—use this confidence for connection and bold ideas.',
+      'This is a great moment to say yes to something brave.',
+      'Strong, vibrant, and creative. Your energy is magnetic.',
+    ],
+    luteal: [
+      'Slow down with nourishing routines and gentle boundaries today.',
+      'Reflect and plan from a calm place. Your future is bright.',
+      'Self-care is power—choose what restores you.',
+    ],
+  };
+
+  const phase = phaseInfo?.phase || 'follicular';
+  const list = messages[phase] || messages.follicular;
+  return list[Math.floor(Math.random() * list.length)];
 }
 
 function getDayInCycle(date, lastPeriodDate, cycleLength) {
