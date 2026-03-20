@@ -461,9 +461,9 @@
             <div class="card card--today">
               <h2 class="card__title"><i class="fas fa-heart"></i> How You're Feeling</h2>
               <div class="today-phase">
-                <div class="phase-badge phase-badge--menstrual">Menstrual Phase</div>
-                <p class="today-info">You're on Day 2 of your cycle</p>
-                <p class="today-subtext">Take it easy. You deserve rest today 🫂</p>
+                <div id="today-phase-badge" class="phase-badge phase-badge--menstrual">Menstrual Phase</div>
+                <p id="today-info" class="today-info">You're on Day 2 of your cycle</p>
+                <p id="today-subtext" class="today-subtext">Take it easy. You deserve rest today 🫂</p>
               </div>
             </div>
 
@@ -473,7 +473,7 @@
               <button class="btn btn--primary btn--block" onclick="navigateTo('add-period-page')">
                 <i class="fas fa-calendar-plus"></i> Log Your Period
               </button>
-              <button class="btn btn--light btn--block">
+              <button id="record-feel-btn" class="btn btn--light btn--block" onclick="navigateTo('insights-page')">
                 <i class="fas fa-pen-fancy"></i> Record How You Feel
               </button>
             </div>
@@ -614,15 +614,15 @@
                 <h3 class="card__title"><i class="fas fa-chart-pie"></i> Summary</h3>
                 <div class="summary-item">
                   <span class="summary-label"><i class="fas fa-circle-dot"></i> Cycle Phase:</span>
-                  <span class="summary-value">Menstrual</span>
+                  <span id="summary-phase" class="summary-value">Menstrual</span>
                 </div>
                 <div class="summary-item">
                   <span class="summary-label"><i class="fas fa-calendar-days"></i> Day:</span>
-                  <span class="summary-value">2 of 28</span>
+                  <span id="summary-day" class="summary-value">2 of 28</span>
                 </div>
                 <div class="summary-item">
                   <span class="summary-label"><i class="fas fa-star"></i> Next Event:</span>
-                  <span class="summary-value">Ovulation (8 days)</span>
+                  <span id="summary-next-event" class="summary-value">Ovulation (8 days)</span>
                 </div>
               </div>
             </div>
