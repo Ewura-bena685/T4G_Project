@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FRAU ROT Contact">
+  <title>Contact - FRAU ROT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../src/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar__container">
+      <div class="navbar__logo">
+        <img src="../images/frau rot.jpg" alt="FRAU ROT Logo" width="44" height="44">
+        <span class="navbar__brand">FRAU ROT</span>
+      </div>
+      <div class="navbar__menu">
+        <a href="../index.html" class="navbar__link"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
+        <a href="features.html" class="navbar__link"><i class="fas fa-star"></i> Features</a>
+        <a href="blog.html" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
+        <a href="faq.html" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="contact.html" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
+      </div>
+      <div class="navbar__actions">
+        <a href="../index.html" class="navbar__btn navbar__btn--outline"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+        <a href="../index.html" class="navbar__btn navbar__btn--primary"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </div>
+      <button class="navbar__toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1 class="page-header__title">
+        <i class="fas fa-envelope"></i>
+        Contact Us
+      </h1>
+      <p class="page-header__subtitle">
+        Need support, partnership information, or research opportunities? We're here to help and collaborate.
+      </p>
+    </header>
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item__icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-item__content">
+            <h3>Email Support</h3>
+            <p>
+              <a href="mailto:support@fraurot.com">support@fraurot.com</a><br>
+              <small>We typically respond within 24 hours</small>
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item__icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-item__content">
+            <h3>Phone Support</h3>
+            <p>
+              +233 500 193 765<br>
+              <small>Monday - Friday, 9 AM - 6 PM GMT</small>
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item__icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-item__content">
+            <h3>Office Address</h3>
+            <p>
+              Wellness Avenue<br>
+              Health City, HC 12345<br>
+              Ghana
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item__icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <div class="contact-item__content">
+            <h3>Partnerships</h3>
+            <p>
+              <a href="mailto:partnerships@fraurot.com">partnerships@fraurot.com</a><br>
+              <small>Research collaborations and business inquiries</small>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h2 class="contact-form__title">Send a Message</h2>
+        <form action="#" method="post">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">
+              <i class="fas fa-user"></i>
+              Name
+            </label>
+            <input id="contact-name" name="name" type="text" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-email">
+              <i class="fas fa-envelope"></i>
+              Email
+            </label>
+            <input id="contact-email" name="email" type="email" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-subject">
+              <i class="fas fa-tag"></i>
+              Subject
+            </label>
+            <select id="contact-subject" name="subject" class="form-input" required>
+              <option value="">Select a topic</option>
+              <option value="support">Technical Support</option>
+              <option value="feedback">Feedback</option>
+              <option value="partnership">Partnership Inquiry</option>
+              <option value="research">Research Collaboration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message">
+              <i class="fas fa-comment"></i>
+              Message
+            </label>
+            <textarea id="contact-message" name="message" class="form-input form-input--textarea" rows="6" required placeholder="Tell us how we can help you..."></textarea>
+          </div>
+
+          <button class="btn btn--primary" type="submit" style="width: 100%;">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+    <!-- Back to Home -->
+    <div class="text-center mt-lg">
+      <a href="../index.html" class="btn btn--primary">
+        <i class="fas fa-home"></i>
+        Back to Home
+      </a>
+    </div>
+  </main>
+</body>
+</html>

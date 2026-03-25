@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FRAU ROT Frequently Asked Questions">
+  <title>FAQ - FRAU ROT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../src/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar__container">
+      <div class="navbar__logo">
+        <img src="../images/frau rot.jpg" alt="FRAU ROT Logo" width="44" height="44">
+        <span class="navbar__brand">FRAU ROT</span>
+      </div>
+      <div class="navbar__menu">
+        <a href="../index.html" class="navbar__link"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
+        <a href="features.html" class="navbar__link"><i class="fas fa-star"></i> Features</a>
+        <a href="blog.html" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
+        <a href="faq.html" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
+        <a href="contact.html" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
+      </div>
+      <div class="navbar__actions">
+        <a href="../index.html" class="navbar__btn navbar__btn--outline"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+        <a href="../index.html" class="navbar__btn navbar__btn--primary"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </div>
+      <button class="navbar__toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1 class="page-header__title">
+        <i class="fas fa-question-circle"></i>
+        Frequently Asked Questions
+      </h1>
+      <p class="page-header__subtitle">
+        Find answers to common questions about FRAU ROT and menstrual health tracking.
+      </p>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="faq-item">
+        <button class="faq-question">
+          Is my data private?
+        </button>
+        <div class="faq-answer">
+          <p>Yes, absolutely. FRAU ROT is designed as privacy-first from the ground up. Your health data is controlled by you and not shared unless you explicitly opt in. We use strong encryption and secure architecture to protect your sensitive information.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I start with no previous cycle history?
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely! You can start logging today and the app will adapt its predictions as you add more entries. Our AI algorithms learn from your unique patterns and become more accurate over time, even if you begin with minimal historical data.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What happens after I sign up?
+        </button>
+        <div class="faq-answer">
+          <p>After account creation, you'll get immediate access to period logging, cycle tracking, personalized insights, and our knowledge content library. You'll also receive guided onboarding to help you make the most of all features.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How accurate are the cycle predictions?
+        </button>
+        <div class="faq-answer">
+          <p>Our predictions become increasingly accurate as you log more data. Most users see 85-95% accuracy within 2-3 cycles. The app uses advanced algorithms that consider multiple factors including cycle length variations, symptoms, and lifestyle factors.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I export my data?
+        </button>
+        <div class="faq-answer">
+          <p>Yes, you can export your data at any time in standard formats. We believe in data portability and giving you full control over your health information. You can also delete your account and data completely if you choose to stop using the service.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to Home -->
+    <div class="text-center mt-lg">
+      <a href="../index.html" class="btn btn--primary">
+        <i class="fas fa-home"></i>
+        Back to Home
+      </a>
+    </div>
+  </main>
+
+  <script>
+    // FAQ Accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+          // Close all other FAQ items
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+
+          // Toggle current item
+          item.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

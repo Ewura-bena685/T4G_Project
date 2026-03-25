@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!--
+    document metadata:
+    - charset defines text encoding
+    - viewport ensures responsive behavior on phones/tablets
+    - description is used by search engines
+  -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="FRAU ROT - Menstrual health app. Guided by nature. Powered by you.">
@@ -13,12 +19,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Styles -->
+  <!--
+    Main stylesheet lives at src/style.css. This contains all visual styling
+    for layout, colors, typography, and components.
+  -->
   <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body>
+  <!--
+    Accessibility note:
+    - skip-link helps keyboard users jump to main content immediately.
+  -->
   <a class="skip-link" href="#hero-page">Skip to main content</a>
-  <!-- Page Container -->
+
+  <!-- Page Container: root wrapper for the app; all sections are inside -->
   <div id="app-container" class="app-container">
 
     <!-- ===================================
@@ -26,6 +41,11 @@
          =================================== -->
 
     <!-- Hero Section -->
+    <!--
+      The hero section is the first view a user sees.
+      It includes navigation and CTA buttons to sign in/up.
+      The class .page-section allows JS to show/hide pages via .hidden.
+    -->
     <section id="hero-page" class="page-section hero">
       <nav class="navbar">
         <div class="navbar__container">
@@ -35,12 +55,12 @@
           </div>
           
           <div class="navbar__menu">
-            <a href="#hero-page" class="navbar__link" data-scroll-target="hero-page"><i class="fas fa-home"></i> Home</a>
-            <a href="#landing-about" class="navbar__link" data-scroll-target="landing-about"><i class="fas fa-info-circle"></i> About</a>
-            <a href="#landing-features" class="navbar__link" data-scroll-target="landing-features"><i class="fas fa-star"></i> Features</a>
-            <a href="#landing-blog" class="navbar__link" data-scroll-target="landing-blog"><i class="fas fa-book"></i> Blog</a>
-            <a href="#landing-faq" class="navbar__link" data-scroll-target="landing-faq"><i class="fas fa-question-circle"></i> FAQ</a>
-            <a href="#landing-contact" class="navbar__link" data-scroll-target="landing-contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="index.html" class="navbar__link"><i class="fas fa-home"></i> Home</a>
+            <a href="pages/about.html" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
+            <a href="pages/features.html" class="navbar__link"><i class="fas fa-star"></i> Features</a>
+            <a href="pages/blog.html" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
+            <a href="pages/faq.html" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="pages/contact.html" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
           </div>
 
           <div class="navbar__actions">
@@ -143,6 +163,10 @@
     </section>
 
     <!-- Sign Up Section -->
+    <!--
+      This page is hidden by default (class hidden).
+      JavaScript switches visible sections (hero, signup, login) as users interact.
+    -->
     <section id="signup-page" class="page-section signup hidden">
       <nav class="navbar">
         <div class="navbar__container">
@@ -150,14 +174,13 @@
             <img src="images/frau rot.jpg" alt="FRAU ROT Logo">
             <span class="navbar__brand">FRAU ROT</span>
           </div>
-          
           <div class="navbar__menu">
-            <a href="#" class="navbar__link" onclick="navigateTo('hero-page')"><i class="fas fa-home"></i> Home</a>
-            <a href="#" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
-            <a href="#" class="navbar__link"><i class="fas fa-star"></i> Features</a>
-            <a href="#" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
-            <a href="#" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
-            <a href="#" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="index.html" class="navbar__link"><i class="fas fa-home"></i> Home</a>
+            <a href="pages/about.html" class="navbar__link"><i class="fas fa-info-circle"></i> About</a>
+            <a href="pages/features.html" class="navbar__link"><i class="fas fa-star"></i> Features</a>
+            <a href="pages/blog.html" class="navbar__link"><i class="fas fa-book"></i> Blog</a>
+            <a href="pages/faq.html" class="navbar__link"><i class="fas fa-question-circle"></i> FAQ</a>
+            <a href="pages/contact.html" class="navbar__link"><i class="fas fa-envelope"></i> Contact</a>
           </div>
 
           <div class="navbar__actions">
@@ -259,6 +282,10 @@
     </section>
 
     <!-- Login Section -->
+    <!--
+      Similar to sign-up, the login section starts hidden.
+      JS toggles it in response to user actions (navigateTo function).
+    -->
     <section id="login-page" class="page-section login hidden">
       <nav class="navbar">
         <div class="navbar__container">

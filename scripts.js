@@ -1,11 +1,52 @@
-/**
+document.addEventListener('DOMContentLoaded', function() {
+  // ... existing code ...
+
+  const partnerBtn = document.querySelector('#partner-page .btn--primary');
+  if (partnerBtn) {
+    partnerBtn.addEventListener('click', function() {
+      const emailEl = document.querySelector('#partner-page input[type="email"]');
+      if (!emailEl || !emailEl.value.trim()) {
+        alert('Please enter partner email.');
+        return;
+      }
+      const email = emailEl.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Invalid email format.');
+        return;
+      }
+
+      const user = getCurrentUser();
+      if (!user) return;
+
+      user.partnerEmail = email;
+      saveUser(user); // adjust to your save function name
+      alert(`Invite sent to ${email} (mock)`);
+
+      // optional: update UI list in partner page
+      // ... your update logic ...
+    });
+  }
+});/**
  * FRAU ROT - Application Script
  * Multi-page navigation, form handling, and user interactions
+ *
+ * This file handles:
+ * - User authentication (signup/login)
+ * - Data persistence (localStorage)
+ * - Page navigation (SPA-style)
+ * - Cycle tracking and calendar generation
+ * - Form interactions and accessibility
  */
 
 // ============================================
 // PERSISTENCE (LocalStorage + session state)
 // ============================================
+
+/*
+  This section manages user data storage using browser localStorage.
+  We store user accounts, preferences, and session info locally.
+  In a real app, this would connect to a backend server instead.
+*/
 
 const STORAGE_KEY = 'frau-rot-state-v1';
 let appState = loadState();
@@ -26,6 +67,7 @@ function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
 }
 
+// Session management functions
 function getCurrentUserEmail() {
   return appState.session?.currentUserEmail || null;
 }
@@ -40,6 +82,7 @@ function clearCurrentUser() {
   saveState();
 }
 
+// User data management functions
 function getCurrentUser() {
   const email = getCurrentUserEmail();
   return email ? appState.users?.[email] : null;
@@ -53,6 +96,7 @@ function setCurrentUserData(user) {
 }
 
 async function hashPassword(password) {
+  // Hash passwords for security (never store plain text)
   const enc = new TextEncoder();
   const data = enc.encode(password);
   const hashBuffer = await crypto.subtle.digest('SHA-256', data);
@@ -62,6 +106,7 @@ async function hashPassword(password) {
 }
 
 async function createUser(email, password) {
+  // Create a new user account with validation
   email = email.trim().toLowerCase();
   if (!email || !validateEmail(email)) {
     throw new Error('Please provide a valid email address.');
@@ -95,6 +140,7 @@ async function createUser(email, password) {
 }
 
 async function authenticateUser(email, password) {
+  // Verify user credentials and log them in
   email = email.trim().toLowerCase();
   const user = appState.users?.[email];
   if (!user) {
@@ -114,6 +160,7 @@ function logout() {
   navigateTo('hero-page');
 }
 
+// Cycle data management functions
 function getUserCycleLength() {
   const user = getCurrentUser();
   return user?.preferences?.cycleLength || null;
@@ -272,6 +319,12 @@ function updateDailyCycleWidgets() {
 // CALENDAR GENERATION
 // ============================================
 
+/*
+  This section creates a visual calendar that shows cycle phases.
+  Each day gets colored based on the menstrual cycle phase.
+  Fertile days show an egg icon.
+*/
+
 let currentCalendarMonth = new Date();
 
 function getLastPeriodDate() {
@@ -289,6 +342,7 @@ function getUserCycleInfo() {
 }
 
 function getPhaseInfo(dateInCycle, cycleLength) {
+  // Determine which phase of the menstrual cycle we're in
   // Typical cycle breakdown: menstrual (1-5), follicular (6-13), ovulation (14-15), luteal (16-28)
   const menstrualDays = 5;
   const follicularDays = 8;
@@ -501,7 +555,14 @@ document.addEventListener('DOMContentLoaded', function() {
 // PAGE NAVIGATION
 // ============================================
 
+/*
+  This section handles Single Page Application (SPA) navigation.
+  Instead of loading new pages, we show/hide sections of the same page.
+  This makes the app feel fast and smooth.
+*/
+
 function navigateTo(pageId) {
+  // Main navigation function - shows one page, hides others
   const protectedPages = new Set([
     'dashboard-page',
     'calendar-page',
@@ -557,6 +618,19 @@ function navigateTo(pageId) {
   }
 }
 
+// Add dynamic navbar style change on scroll (for landing page pop)
+window.addEventListener('scroll', function() {
+  const heroPage = document.getElementById('hero-page');
+  const navbar = document.querySelector('.navbar');
+  if (!heroPage || !navbar) return;
+
+  if (!heroPage.classList.contains('hidden') && window.scrollY > 30) {
+    navbar.classList.add('navbar--scrolled');
+  } else {
+    navbar.classList.remove('navbar--scrolled');
+  }
+});
+
 function updateActiveNav(pageId) {
   const navItems = document.querySelectorAll('.nav-item');
   navItems.forEach(item => item.classList.remove('active'));
@@ -609,12 +683,17 @@ function selectChip(element, category, value) {
 // FORM HANDLING
 // ============================================
 
+/*
+  This section handles form submissions for signup, login, and period logging.
+  Forms are validated and user data is saved to localStorage.
+*/
+
 document.addEventListener('DOMContentLoaded', function() {
   // Signup Form
   const signupForm = document.getElementById('signup-form');
   if (signupForm) {
     signupForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
+      e.preventDefault(); // Prevent page reload
       const email = this.querySelector('input[type="email"]').value;
       const passwords = this.querySelectorAll('input[type="password"]');
 
@@ -820,6 +899,11 @@ document.addEventListener('keydown', function(event) {
 // APP INITIALIZATION
 // ============================================
 
+/*
+  This runs when the page first loads.
+  It checks if a user is already logged in and shows the appropriate page.
+*/
+
 window.addEventListener('load', function() {
   console.log('FRAU ROT Application loaded successfully');
   console.log('Ready for interactions');
@@ -869,7 +953,13 @@ function getUserPreferences() {
 // UTILITY FUNCTIONS
 // ============================================
 
+/*
+  Helper functions used throughout the app.
+  These are reusable pieces of code that make development easier.
+*/
+
 function getFormData(formElement) {
+  // Extract all form field values into a simple object
   const formData = new FormData(formElement);
   const data = {};
   for (let [key, value] of formData) {
@@ -879,6 +969,7 @@ function getFormData(formElement) {
 }
 
 function validateEmail(email) {
+  // Check if email format is valid using regex
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 }
