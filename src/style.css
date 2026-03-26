@@ -188,16 +188,16 @@ a:hover { opacity: 0.8; }
   left: 0;
   right: 0;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-  border-bottom: 1px solid rgba(196, 0, 78, 0.2);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 30px rgba(196, 0, 78, 0.25);
+  border-bottom: 1px solid rgba(245, 238, 241, 0.2);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 8px 30px rgba(248, 242, 244, 0.25);
   z-index: 1000;
   transition: all var(--transition-fast);
 }
 
 .navbar--scrolled {
   background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.95));
-  box-shadow: 0 12px 32px rgba(196, 0, 78, 0.3);
+  box-shadow: 0 12px 32px rgba(253, 253, 253, 0.3);
   transform: translateY(-2px);
 }
 
