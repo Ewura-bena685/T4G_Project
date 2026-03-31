@@ -13,7 +13,7 @@
   <title>FRAU ROT - Menstrual Health Companion</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -51,7 +51,7 @@
         <div class="navbar__container">
           <div class="navbar__logo">
             <img src="images/frau rot.jpg" alt="FRAU ROT Logo" width="44" height="44">
-            
+            <span class="navbar__brand">FRAU ROT</span>
           </div>
           
           <div class="navbar__menu">
@@ -81,12 +81,21 @@
       </nav>
 
       <div class="hero__content">
+        <!-- Modern hero messaging for the landing experience -->
+        <p class="hero__eyebrow">Private cycle care, beautifully designed</p>
         <h1 class="hero__title">FRAU ROT</h1>
-        <p class="hero__subtitle">Guided By Nature. Powered By You</p>
-        
+        <p class="hero__subtitle">Your intelligent menstrual wellness companion</p>
+        <p class="hero__description">Track your rhythm, log how you feel, and receive calm, clear guidance tailored to every phase of your cycle.</p>
+
         <div class="hero__buttons">
-          <button type="button" class="btn btn--primary" onclick="navigateTo('signup-page')">Sign Up</button>
-          <button type="button" class="btn btn--secondary" onclick="navigateTo('login-page')">Sign In</button>
+          <button type="button" class="btn btn--primary" onclick="navigateTo('signup-page')">Start Free</button>
+          <a href="#landing-features" class="btn btn--secondary" data-scroll-target="landing-features">Learn More</a>
+        </div>
+
+        <div class="hero__trustbar" aria-label="Key product benefits">
+          <span><i class="fas fa-shield-alt"></i> Privacy-first</span>
+          <span><i class="fas fa-chart-line"></i> Smarter insights</span>
+          <span><i class="fas fa-heart"></i> Gentle support</span>
         </div>
 
         <p class="hero__cta-text">Already have an account? <a href="#" onclick="navigateTo('login-page')" class="hero__link">Sign In</a></p>
@@ -104,16 +113,19 @@
           <h2 class="landing-heading">Built for clarity, care, and consistency</h2>
           <div class="landing-feature-grid">
             <article class="landing-feature-card">
+              <div class="landing-feature-icon"><i class="fas fa-brain"></i></div>
               <h3>Phase Intelligence</h3>
-              <p>Visual cycle phases with meaningful predictions and practical guidance.</p>
+              <p>Understand where you are in your cycle with helpful, easy-to-read phase guidance.</p>
             </article>
             <article class="landing-feature-card">
+              <div class="landing-feature-icon"><i class="fas fa-book-medical"></i></div>
               <h3>Daily Insight Logging</h3>
-              <p>Track mood, symptoms, flow, and notes to uncover personal patterns.</p>
+              <p>Capture mood, symptoms, flow, and notes to reveal patterns that matter to you.</p>
             </article>
             <article class="landing-feature-card">
-              <h3>Partner & Privacy Controls</h3>
-              <p>Share intentionally with clear controls while keeping your data protected.</p>
+              <div class="landing-feature-icon"><i class="fas fa-user-shield"></i></div>
+              <h3>Partner Privacy Controls</h3>
+              <p>Share selectively and confidently with simple privacy controls that keep you in charge.</p>
             </article>
           </div>
         </section>
@@ -203,8 +215,8 @@
       <div class="container">
         <div class="section-banner">
           <div class="section-banner__text">
-            <h2 class="section-title">Hello Beautiful,</h2>
-            <p class="section-subtitle">Create your account and start your wellness journey</p>
+            <h2 class="section-title">Hello Beautiful.</h2>
+            <p class="section-subtitle">Start your wellness journey.</p>
           </div>
           <div class="section-banner__image">
             <img src="images/meditation.jpg" alt="Woman meditating for period wellness">
@@ -323,8 +335,8 @@
       <div class="container">
         <div class="section-banner">
           <div class="section-banner__text">
-            <h2 class="section-title">Welcome Back, Ewura</h2>
-            <p class="section-subtitle">Continue your wellness journey with us</p>
+            <h2 class="section-title">Welcome Back.</h2>
+            <p class="section-subtitle">Return to your calm, private wellness space.</p>
           </div>
           <div class="section-banner__image">
             <img src="images/vector of woc.jpg" alt="Women illustration">
@@ -1347,63 +1359,158 @@
         </aside>
 
         <main class="main-content">
-          <h1 class="page-title"><i class="fas fa-book-open"></i> Learn About Your Cycle</h1>
-          
+          <div class="learn-intro">
+            <span class="topic-pill">Wise Older Sister Series</span>
+            <h1 class="page-title"><i class="fas fa-book-open"></i> Learn About Your Cycle</h1>
+            <p class="page-subtitle">Short, intelligent reads designed to help you move through each phase with more softness, self-trust, and body awareness.</p>
+          </div>
+
+          <!-- Featured Learn cards: quick entry points into the in-app education library. -->
           <div class="articles-grid">
-            <div class="article-card">
-              <div class="article-card__header">
-                <i class="fas fa-dna"></i>
+            <div class="article-card article-card--luteal">
+              <div class="article-card__overlay">
+                <div class="article-card__header">
+                  <i class="fas fa-mug-hot"></i>
+                </div>
+                <p class="article-card__eyebrow">Luteal phase</p>
+                <h3 class="article-card__title">The Luteal Slow-Down: Why Your Brain Craves Cozy</h3>
+                <p class="article-card__excerpt">A gentle read on progesterone, boundaries, and why rest becomes a form of wisdom in the second half of your cycle.</p>
+                <a href="#learn-luteal" class="article-card__link">Read Article <i class="fas fa-arrow-right"></i></a>
               </div>
-              <h3 class="article-card__title">Understanding Ovulation</h3>
-              <p class="article-card__excerpt">Learn what happens during your ovulation window and how to recognize the signs your body is sending.</p>
-              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
             </div>
 
-            <div class="article-card">
-              <div class="article-card__header">
-                <i class="fas fa-spa"></i>
+            <div class="article-card article-card--estrogen">
+              <div class="article-card__overlay">
+                <div class="article-card__header">
+                  <i class="fas fa-sun"></i>
+                </div>
+                <p class="article-card__eyebrow">Follicular to ovulation</p>
+                <h3 class="article-card__title">The Estrogen Glow: Navigating Your Social Peak</h3>
+                <p class="article-card__excerpt">Understand the bright lift of rising estrogen and how to use that social radiance without overextending yourself.</p>
+                <a href="#learn-estrogen" class="article-card__link">Read Article <i class="fas fa-arrow-right"></i></a>
               </div>
-              <h3 class="article-card__title">Nutrition & Your Cycle</h3>
-              <p class="article-card__excerpt">Discover how nutrition changes through your cycle and which foods support each phase.</p>
-              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
             </div>
 
-            <div class="article-card">
-              <div class="article-card__header">
-                <i class="fas fa-brain"></i>
+            <div class="article-card article-card--day-one">
+              <div class="article-card__overlay">
+                <div class="article-card__header">
+                  <i class="fas fa-droplet"></i>
+                </div>
+                <p class="article-card__eyebrow">Menstrual phase</p>
+                <h3 class="article-card__title">Blood &amp; Iron: Rituals for a Restorative Day 1</h3>
+                <p class="article-card__excerpt">Reframe the start of your period as a return to restoration, nourishment, and more intentional care.</p>
+                <a href="#learn-day-one" class="article-card__link">Read Article <i class="fas fa-arrow-right"></i></a>
               </div>
-              <h3 class="article-card__title">Mood & Hormones</h3>
-              <p class="article-card__excerpt">Understanding the connection between your cycle and emotional wellbeing throughout the month.</p>
-              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="article-card">
-              <div class="article-card__header">
-                <i class="fas fa-person-hiking"></i>
-              </div>
-              <h3 class="article-card__title">Exercise & Your Cycle</h3>
-              <p class="article-card__excerpt">Train smarter by syncing your workouts with your cycle phases for optimal performance.</p>
-              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="article-card">
-              <div class="article-card__header">
-                <i class="fas fa-heart"></i>
-              </div>
-              <h3 class="article-card__title">Intimacy & Your Cycle</h3>
-              <p class="article-card__excerpt">A guide to communicating your needs and desires throughout your cycle with your partner.</p>
-              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="article-card">
-              <div class="article-card__header">
-                <i class="fas fa-leaf"></i>
-              </div>
-              <h3 class="article-card__title">Natural Remedies</h3>
-              <p class="article-card__excerpt">Explore herbal and natural approaches to managing period symptoms and supporting wellness.</p>
-              <a href="#" class="article-card__link">Read More <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
+
+          <!-- Scannable in-app article blocks for the Learn section. -->
+          <section class="learn-series" aria-label="Featured learn articles">
+            <article id="learn-luteal" class="learn-article-block">
+              <div class="learn-article-block__header learn-article-block__split">
+                <div class="learn-article-block__intro">
+                  <span class="topic-pill">Luteal phase support</span>
+                  <h2>The Luteal Slow-Down: Why Your Brain Craves Cozy</h2>
+                  <p>There is a certain evening that seems to arrive before the sun has even set: your sweater feels like a safe place, your phone feels louder than usual, and the idea of doing less suddenly feels exquisitely correct. That is not laziness. It is rhythm.</p>
+                </div>
+                <div class="learn-article-visual">
+                  <img src="images/meditation.jpg" alt="Woman meditating to represent calm luteal-phase rest and restoration">
+                </div>
+              </div>
+              <div class="learn-article-block__body">
+                <p>After ovulation, <strong>progesterone</strong> begins to rise. Think of it as a velvet curtain drawing softly across a bright room. The energy of earlier days dims a little, and your attention turns inward. You may feel more selective, more sensitive to noise, and more aware of where your energy is going.</p>
+                <p>This phase is often when boundaries start to matter more. Group chats feel busier. Overbooked days feel heavier. Your body is asking for steadiness, warmth, and a little more protection around your peace. There is wisdom in listening.</p>
+
+                <h3><strong>Science, simplified</strong></h3>
+                <p>Progesterone is not trying to make you smaller; it is helping you slow the pace so your system can conserve and prepare. The luteal phase is your body saying, “Choose what truly deserves you.”</p>
+
+                <h3><strong>Glossy Tips</strong></h3>
+                <ul class="glossy-tip-list">
+                  <li><strong>Nutrition:</strong> Choose warm, grounding meals like oats, lentils, soups, sweet potatoes, and a little dark chocolate for magnesium-rich comfort.</li>
+                  <li><strong>Movement:</strong> Swap intensity for elegance with walking, Pilates, stretching, or a slower strength session that leaves you supported—not depleted.</li>
+                  <li><strong>Mental Clarity:</strong> Reduce decision fatigue. Simplify your schedule, set one graceful boundary, and let your evenings feel softer than usual.</li>
+                </ul>
+
+                <p class="learn-article-block__closing">When FRAU ROT helps you notice this pattern each month, rest stops feeling like a guilty pleasure and starts feeling like intelligence.</p>
+              </div>
+            </article>
+
+            <article id="learn-estrogen" class="learn-article-block">
+              <div class="learn-article-block__header learn-article-block__split">
+                <div class="learn-article-block__intro">
+                  <span class="topic-pill">Follicular radiance</span>
+                  <h2>The Estrogen Glow: Navigating Your Social Peak</h2>
+                  <p>Some days, conversation feels effortless. Ideas arrive quickly, laughter comes more easily, and being around people feels energizing instead of draining. That bright lift is often your cycle moving into one of its most expansive chapters.</p>
+                </div>
+                <div class="learn-article-visual">
+                  <img src="images/vector of woc.jpg" alt="Illustration of women together representing confidence, connection, and social energy">
+                </div>
+              </div>
+              <div class="learn-article-block__body">
+                <p>As you move through the follicular phase toward ovulation, <strong>estrogen rises</strong>. Picture morning light streaming through sheer curtains: everything feels clearer, fresher, and more alive. Your mind may feel sharper, your words more fluid, and your confidence more available to you.</p>
+                <p>This is often a beautiful window for collaboration, creativity, visibility, and connection. You may notice you want to make plans, share ideas, dress with more intention, or simply be seen. That is your body working with exquisite timing.</p>
+
+                <h3><strong>Science, simplified</strong></h3>
+                <p>Rising estrogen can support mood, motivation, and verbal ease. It is less about becoming a “better” version of yourself and more about meeting a season when your radiance is naturally more outward-facing.</p>
+
+                <h3><strong>Glossy Tips</strong></h3>
+                <ul class="glossy-tip-list">
+                  <li><strong>Nutrition:</strong> Lean into bright, fresh foods—berries, leafy greens, eggs, citrus, and hydration that keeps your energy clear and steady.</li>
+                  <li><strong>Movement:</strong> This is a lovely phase for dance, strength training, cycling, or any workout that feels expressive and strong.</li>
+                  <li><strong>Mental Clarity:</strong> Schedule presentations, planning sessions, or meaningful conversations now. Let your sharper communication work in your favor.</li>
+                </ul>
+
+                <p class="learn-article-block__closing">Tracking this “glow window” in FRAU ROT can help you time meetings, social plans, and creative work with more ease and less guesswork.</p>
+              </div>
+            </article>
+
+            <article id="learn-day-one" class="learn-article-block">
+              <div class="learn-article-block__header learn-article-block__split">
+                <div class="learn-article-block__intro">
+                  <span class="topic-pill">Menstrual restoration</span>
+                  <h2>Blood &amp; Iron: Rituals for a Restorative Day 1</h2>
+                  <p>Day 1 rarely arrives with ceremony. It usually arrives with a quiet tug in the body and a strong desire to turn the world’s volume down. But the beginning of your period does not have to feel like disruption. It can feel like return.</p>
+                </div>
+                <div class="learn-article-visual">
+                  <img src="images/flowers.jpg" alt="Soft floral image representing menstrual restoration and gentle self-care">
+                </div>
+              </div>
+              <div class="learn-article-block__body">
+                <p>At the start of menstruation, hormone levels drop. Think of it as the tide gently pulling back from the shore. Your body is releasing, resetting, and asking for a more spacious pace. Because bleeding can also mean some loss of iron, nourishment matters now in a very practical way.</p>
+                <p>Rather than forcing yourself into business-as-usual mode, try meeting Day 1 with ritual: a warm drink, a slower morning, a meal that feels deeply supportive, and fewer unnecessary demands. Even small acts of tenderness can change the emotional tone of the day.</p>
+
+                <h3><strong>Science, simplified</strong></h3>
+                <p>This phase is not the absence of productivity; it is the beginning of restoration. Your body is clearing, recalibrating, and reminding you that rest is part of the cycle—not separate from it.</p>
+
+                <h3><strong>Glossy Tips</strong></h3>
+                <ul class="glossy-tip-list">
+                  <li><strong>Nutrition:</strong> Reach for iron-supportive foods like beans, spinach, lentils, eggs, or lean meat, and pair them with vitamin C from citrus or peppers.</li>
+                  <li><strong>Movement:</strong> Choose the gentlest option available—a short walk, deep stretching, or restful yoga that feels like exhale rather than effort.</li>
+                  <li><strong>Mental Clarity:</strong> Keep Day 1 low-demand where possible. Journal, cancel what can wait, and give yourself permission to move more quietly.</li>
+                </ul>
+
+                <p class="learn-article-block__closing">When you log your symptoms and energy in FRAU ROT, Day 1 becomes easier to prepare for—and much easier to honor.</p>
+              </div>
+            </article>
+          </section>
+
+          <section class="learn-mini-library" aria-label="More cycle topics">
+            <h2 class="section-label">More to explore</h2>
+            <div class="learn-mini-grid">
+              <div class="learn-mini-card">
+                <h3>Understanding Ovulation</h3>
+                <p>Notice the physical cues, fertile window patterns, and body signals that often appear around ovulation.</p>
+              </div>
+              <div class="learn-mini-card">
+                <h3>Exercise &amp; Your Cycle</h3>
+                <p>Sync workouts with your energy patterns so movement feels supportive, sustainable, and effective.</p>
+              </div>
+              <div class="learn-mini-card">
+                <h3>Natural Remedies</h3>
+                <p>Explore warm compresses, sleep rituals, hydration, and other gentle ways to support symptom days.</p>
+              </div>
+            </div>
+          </section>
         </main>
       </div>
     </section>

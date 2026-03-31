@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FRAU ROT Blog">
+  <meta name="description" content="Explore menstrual health, nutrition, and emotional wellness articles from the FRAU ROT blog.">
   <title>Blog - FRAU ROT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -37,67 +37,80 @@
   <main>
     <!-- Page Header -->
     <header class="page-header">
+      <div class="article-meta-row article-meta-row--center">
+        <span class="topic-pill">Evidence-Informed</span>
+        <span class="topic-pill topic-pill--muted">Women's Wellness</span>
+        <span class="topic-pill topic-pill--muted">Cycle Tracking</span>
+      </div>
       <h1 class="page-header__title">
         <i class="fas fa-book"></i>
         FRAU ROT Blog
       </h1>
       <p class="page-header__subtitle">
-        Expert insights, research-backed advice, and community stories about menstrual health and wellness.
+        Warm, research-aware articles that help women understand hormones, moods, nutrition, and the everyday patterns shaping their cycle.
       </p>
     </header>
 
-    <!-- Blog Articles -->
+    <!-- Featured blog topics identified from the current site. -->
     <section class="content-section">
+      <div class="content-section__header">
+        <h2 class="content-section__title"><i class="fas fa-feather-alt"></i> Current Blog Topics</h2>
+        <p class="content-section__description">We identified three key editorial themes on the FRAU ROT blog and expanded each one into a full, supportive long-form article.</p>
+      </div>
+
       <div class="blog-grid">
-        <article class="blog-card">
-          <div class="blog-card__image"></div>
+        <article class="blog-card reveal-on-scroll">
+          <div class="blog-card__image blog-card__image--cycle"></div>
           <div class="blog-card__content">
+            <span class="blog-card__category">Hormones &amp; Cycle Health</span>
             <div class="blog-card__meta">
               <i class="fas fa-calendar"></i>
-              March 25, 2026
+              March 25, 2026 &nbsp;•&nbsp; 8 min read
             </div>
             <h3 class="blog-card__title">Understanding Your Cycle: A Science-Backed Guide</h3>
             <p class="blog-card__excerpt">
-              Explore menstrual phases, hormonal shifts, and practical lifestyle tips to maximize comfort and understanding of your body's natural rhythms.
+              A clear, reassuring walkthrough of menstrual phases, hormonal shifts, common symptoms, and simple ways to support your body with more confidence.
             </p>
-            <a href="#read-more" class="blog-card__link">
-              Read More
+            <a href="cycle-guide.html" class="blog-card__link">
+              Read Article
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </article>
 
-        <article class="blog-card">
-          <div class="blog-card__image"></div>
+        <article class="blog-card reveal-on-scroll">
+          <div class="blog-card__image blog-card__image--nutrition"></div>
           <div class="blog-card__content">
+            <span class="blog-card__category">Nutrition &amp; Lifestyle</span>
             <div class="blog-card__meta">
               <i class="fas fa-utensils"></i>
-              March 20, 2026
+              March 20, 2026 &nbsp;•&nbsp; 9 min read
             </div>
             <h3 class="blog-card__title">Nutrition for Balanced Cycles</h3>
             <p class="blog-card__excerpt">
-              How food, hydration and micronutrients support symptom management and energy through every phase of your menstrual cycle.
+              Learn how hydration, iron, protein, magnesium, and realistic meal planning can support energy, reduce cravings, and make symptom days easier.
             </p>
-            <a href="#read-more" class="blog-card__link">
-              Read More
+            <a href="nutrition-balanced-cycles.html" class="blog-card__link">
+              Read Article
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
         </article>
 
-        <article class="blog-card">
-          <div class="blog-card__image"></div>
+        <article class="blog-card reveal-on-scroll">
+          <div class="blog-card__image blog-card__image--mind"></div>
           <div class="blog-card__content">
+            <span class="blog-card__category">Mental Health &amp; Self-Care</span>
             <div class="blog-card__meta">
               <i class="fas fa-brain"></i>
-              March 15, 2026
+              March 15, 2026 &nbsp;•&nbsp; 8 min read
             </div>
             <h3 class="blog-card__title">Mental Wellness and Menstruation</h3>
             <p class="blog-card__excerpt">
-              Plan self-care, stress reduction and rest strategies for emotional flow, premenstrual to regenerative days.
+              Explore mood shifts, PMS awareness, emotional resilience, and the small daily habits that help you feel more grounded through each phase.
             </p>
-            <a href="#read-more" class="blog-card__link">
-              Read More
+            <a href="mental-wellness-menstruation.html" class="blog-card__link">
+              Read Article
               <i class="fas fa-arrow-right"></i>
             </a>
           </div>
@@ -105,13 +118,40 @@
       </div>
     </section>
 
-    <!-- Back to Home -->
-    <div class="text-center mt-lg">
-      <a href="../index.html" class="btn btn--primary">
-        <i class="fas fa-home"></i>
-        Back to Home
-      </a>
-    </div>
+    <section class="content-section blog-guide-section">
+      <div class="content-section__header">
+        <h2 class="content-section__title"><i class="fas fa-lightbulb"></i> What You'll Learn</h2>
+        <p class="content-section__description">Each article blends practical wellness guidance with digital tracking insight so readers can turn information into action.</p>
+      </div>
+
+      <div class="blog-guide-grid">
+        <article class="blog-guide-card">
+          <h3>Cycle Literacy</h3>
+          <p>Understand the four menstrual phases, notice common body signals, and learn when pattern shifts may deserve clinical attention.</p>
+        </article>
+        <article class="blog-guide-card">
+          <h3>Everyday Wellness Tools</h3>
+          <p>Explore realistic nutrition, rest, stress-management, and self-care habits that fit real life—not a perfect routine.</p>
+        </article>
+        <article class="blog-guide-card">
+          <h3>Data-Driven Self-Understanding</h3>
+          <p>See how cycle tracking with FRAU ROT can help users connect symptoms, mood, and lifestyle patterns with more clarity.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="blog-cta-section">
+      <div class="blog-cta-section__content">
+        <p class="landing-kicker">For FRAU ROT users</p>
+        <h2 class="landing-heading">Read, reflect, and track what matters most</h2>
+        <p class="landing-copy">The best wellness advice becomes more useful when it connects to your own body. Explore the articles above, then use FRAU ROT to log your patterns with confidence.</p>
+        <div class="landing-contact-actions">
+          <a href="../index.html" class="btn btn--primary"><i class="fas fa-chart-line"></i> Start Tracking</a>
+          <a href="../index.html" class="btn btn--secondary"><i class="fas fa-home"></i> Back to Home</a>
+        </div>
+      </div>
+    </section>
   </main>
+  <script src="../scripts.js"></script>
 </body>
 </html>

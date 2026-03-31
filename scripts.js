@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // ... your update logic ...
     });
   }
-});/**
+});
+/**
  * FRAU ROT - Application Script
  * Multi-page navigation, form handling, and user interactions
  *
@@ -549,7 +550,45 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('button:not([type])').forEach(button => {
     button.type = 'button';
   });
+
+  initializeRevealAnimations();
 });
+
+function initializeRevealAnimations() {
+  const animatedElements = document.querySelectorAll(
+    '.landing-block, .landing-feature-card, .section-banner, .form-container, .card, .article-card, .feature-card, .blog-card, .contact-form, .about-content, .faq-item, .contact-item'
+  );
+
+  if (!animatedElements.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    animatedElements.forEach(element => element.classList.add('is-visible'));
+    return;
+  }
+
+  if (!window.frauRotRevealObserver) {
+    window.frauRotRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          window.frauRotRevealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }
+
+  animatedElements.forEach(element => {
+    if (!element.classList.contains('reveal-on-scroll')) {
+      element.classList.add('reveal-on-scroll');
+    }
+
+    if (!element.dataset.revealBound) {
+      window.frauRotRevealObserver.observe(element);
+      element.dataset.revealBound = 'true';
+    }
+  });
+}
 
 // ============================================
 // PAGE NAVIGATION
@@ -611,6 +650,7 @@ function navigateTo(pageId) {
 
   // Update data-dependent UI
   renderCurrentUser();
+  initializeRevealAnimations();
 
   // Render calendar if on calendar page
   if (pageId === 'calendar-page') {
