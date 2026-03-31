@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!user) return;
 
       user.partnerEmail = email;
-      saveUser(user); // adjust to your save function name
+      setCurrentUserData(user);
       alert(`Invite sent to ${email} (mock)`);
 
       // optional: update UI list in partner page
@@ -193,6 +193,67 @@ function getPeriodEntries() {
   return user?.logs?.periods || [];
 }
 
+function getLatestInsightEntry() {
+  const user = getCurrentUser();
+  const entries = user?.logs?.insights || [];
+  return entries.length ? entries[entries.length - 1] : null;
+}
+
+function normalizeChipLabel(chip) {
+  return chip?.textContent?.replace(/\s+/g, ' ').trim() || '';
+}
+
+function getInsightSelections() {
+  const sections = document.querySelectorAll('#insights-page .insights-left .insight-section');
+  const getLabels = (index) => sections[index]
+    ? Array.from(sections[index].querySelectorAll('.chip.active')).map(normalizeChipLabel)
+    : [];
+
+  return {
+    moods: getLabels(0),
+    symptoms: getLabels(1),
+    discharge: getLabels(2),
+    flow: getLabels(3),
+    sexualActivity: getLabels(4),
+  };
+}
+
+function hydrateSavedInsights() {
+  const notesField = document.getElementById('insights-notes');
+  const sections = document.querySelectorAll('#insights-page .insights-left .insight-section');
+  if (!notesField && !sections.length) return;
+
+  document.querySelectorAll('#insights-page .chip.active').forEach(chip => chip.classList.remove('active'));
+
+  const latest = getLatestInsightEntry();
+  if (!latest) {
+    if (notesField) notesField.value = '';
+    return;
+  }
+
+  if (notesField) {
+    notesField.value = latest.notes || '';
+  }
+
+  const savedGroups = [
+    latest.moods || [],
+    latest.symptoms || [],
+    latest.discharge || [],
+    latest.flow || [],
+    latest.sexualActivity || [],
+  ];
+
+  sections.forEach((section, index) => {
+    const selectedLabels = savedGroups[index] || [];
+    Array.from(section.querySelectorAll('.chip')).forEach(chip => {
+      const label = normalizeChipLabel(chip);
+      if (selectedLabels.includes(label)) {
+        chip.classList.add('active');
+      }
+    });
+  });
+}
+
 function renderCurrentUser() {
   const user = getCurrentUser();
 
@@ -217,6 +278,7 @@ function renderCurrentUser() {
   }
 
   hydrateCycleLengthSelection();
+  hydrateSavedInsights();
   renderLogs();
   updateDailyCycleWidgets();
 }
@@ -825,6 +887,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Page actions for insights and data tools
+  setupNavigationShortcuts();
+  setupInsightsActions();
+  setupDataActions();
+
   // OAuth Handlers
   setupOAuthHandlers();
 
@@ -916,6 +983,132 @@ function enhanceAccessibility() {
       checkbox.setAttribute('aria-label', text.textContent.trim());
     }
   });
+}
+
+function setupNavigationShortcuts() {
+  document.querySelectorAll('[data-page="insights"]').forEach(link => {
+    if (link.dataset.boundInsightsNav === 'true') return;
+
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      navigateTo('insights-page');
+    });
+
+    link.dataset.boundInsightsNav = 'true';
+  });
+
+  const recordFeelBtn = document.getElementById('record-feel-btn');
+  if (recordFeelBtn && recordFeelBtn.dataset.boundClick !== 'true') {
+    recordFeelBtn.addEventListener('click', function() {
+      navigateTo('insights-page');
+    });
+    recordFeelBtn.dataset.boundClick = 'true';
+  }
+}
+
+function setupInsightsActions() {
+  const saveButton = document.getElementById('save-insights-btn');
+  const notesField = document.getElementById('insights-notes');
+  if (!saveButton || !notesField || saveButton.dataset.boundClick === 'true') return;
+
+  saveButton.addEventListener('click', function() {
+    const user = getCurrentUser();
+    if (!user) {
+      alert('Please sign in to save your notes.');
+      navigateTo('login-page');
+      return;
+    }
+
+    const notes = notesField.value.trim();
+    const selections = getInsightSelections();
+    const hasSelections = Object.values(selections).some(value => Array.isArray(value) && value.length > 0);
+
+    if (!notes && !hasSelections) {
+      alert('Add a note or select at least one feeling before saving.');
+      return;
+    }
+
+    user.logs = user.logs || { periods: [] };
+    user.logs.insights = user.logs.insights || [];
+
+    const insightEntry = {
+      recordedAt: new Date().toISOString(),
+      notes,
+      ...selections,
+    };
+
+    user.logs.insights.push(insightEntry);
+    setCurrentUserData(user);
+    hydrateSavedInsights();
+
+    const originalLabel = saveButton.innerHTML;
+    saveButton.innerHTML = '<i class="fas fa-check"></i> Saved';
+    setTimeout(() => {
+      saveButton.innerHTML = originalLabel;
+    }, 1400);
+
+    alert('Your notes have been saved successfully.');
+  });
+
+  saveButton.dataset.boundClick = 'true';
+}
+
+function downloadCurrentUserData() {
+  const user = getCurrentUser();
+  if (!user) {
+    alert('Please sign in to download your data.');
+    navigateTo('login-page');
+    return;
+  }
+
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    app: 'FRAU ROT',
+    data: user,
+  };
+
+  const fileName = `frau-rot-data-${user.email.replace(/[^a-z0-9]/gi, '-').toLowerCase()}.json`;
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
+function setupDataActions() {
+  const downloadButton = document.getElementById('download-data-btn');
+  if (downloadButton && downloadButton.dataset.boundClick !== 'true') {
+    downloadButton.addEventListener('click', function() {
+      downloadCurrentUserData();
+    });
+    downloadButton.dataset.boundClick = 'true';
+  }
+
+  const clearButton = document.getElementById('clear-data-btn');
+  if (clearButton && clearButton.dataset.boundClick !== 'true') {
+    clearButton.addEventListener('click', function() {
+      const user = getCurrentUser();
+      if (!user) {
+        alert('No user data is currently available to clear.');
+        return;
+      }
+
+      const confirmed = window.confirm('This will remove your saved FRAU ROT data from this browser. Do you want to continue?');
+      if (!confirmed) return;
+
+      delete appState.users[user.email];
+      clearCurrentUser();
+      saveState();
+      alert('Your saved data has been cleared from this browser.');
+      navigateTo('hero-page');
+    });
+    clearButton.dataset.boundClick = 'true';
+  }
 }
 
 // ============================================
