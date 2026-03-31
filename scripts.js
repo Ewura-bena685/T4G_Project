@@ -1006,49 +1006,67 @@ function setupNavigationShortcuts() {
   }
 }
 
-function setupInsightsActions() {
+function saveCurrentInsight() {
   const saveButton = document.getElementById('save-insights-btn');
   const notesField = document.getElementById('insights-notes');
-  if (!saveButton || !notesField || saveButton.dataset.boundClick === 'true') return;
+  const user = getCurrentUser();
 
-  saveButton.addEventListener('click', function() {
-    const user = getCurrentUser();
-    if (!user) {
-      alert('Please sign in to save your notes.');
-      navigateTo('login-page');
-      return;
-    }
+  if (!user) {
+    alert('Please sign in to save your notes.');
+    navigateTo('login-page');
+    return false;
+  }
 
-    const notes = notesField.value.trim();
-    const selections = getInsightSelections();
-    const hasSelections = Object.values(selections).some(value => Array.isArray(value) && value.length > 0);
+  if (!notesField) {
+    alert('The notes field is unavailable right now. Please refresh and try again.');
+    return false;
+  }
 
-    if (!notes && !hasSelections) {
-      alert('Add a note or select at least one feeling before saving.');
-      return;
-    }
+  const notes = notesField.value.trim();
+  const selections = getInsightSelections();
+  const hasSelections = Object.values(selections).some(value => Array.isArray(value) && value.length > 0);
 
-    user.logs = user.logs || { periods: [] };
-    user.logs.insights = user.logs.insights || [];
+  if (!notes && !hasSelections) {
+    alert('Add a note or select at least one feeling before saving.');
+    return false;
+  }
 
-    const insightEntry = {
-      recordedAt: new Date().toISOString(),
-      notes,
-      ...selections,
-    };
+  user.logs = user.logs || { periods: [] };
+  user.logs.insights = user.logs.insights || [];
 
-    user.logs.insights.push(insightEntry);
-    setCurrentUserData(user);
-    hydrateSavedInsights();
+  const insightEntry = {
+    recordedAt: new Date().toISOString(),
+    notes,
+    ...selections,
+  };
 
+  user.logs.insights.push(insightEntry);
+  setCurrentUserData(user);
+  hydrateSavedInsights();
+  renderCurrentUser();
+
+  if (saveButton) {
     const originalLabel = saveButton.innerHTML;
     saveButton.innerHTML = '<i class="fas fa-check"></i> Saved';
     setTimeout(() => {
       saveButton.innerHTML = originalLabel;
     }, 1400);
+  }
 
-    alert('Your notes have been saved successfully.');
-  });
+  alert('Your notes have been saved successfully.');
+  return true;
+}
+
+function setupInsightsActions() {
+  const saveButton = document.getElementById('save-insights-btn');
+  if (!saveButton || saveButton.dataset.boundClick === 'true') return;
+
+  if (!saveButton.hasAttribute('onclick')) {
+    saveButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      saveCurrentInsight();
+    });
+  }
 
   saveButton.dataset.boundClick = 'true';
 }
@@ -1083,9 +1101,11 @@ function downloadCurrentUserData() {
 function setupDataActions() {
   const downloadButton = document.getElementById('download-data-btn');
   if (downloadButton && downloadButton.dataset.boundClick !== 'true') {
-    downloadButton.addEventListener('click', function() {
-      downloadCurrentUserData();
-    });
+    if (!downloadButton.hasAttribute('onclick')) {
+      downloadButton.addEventListener('click', function() {
+        downloadCurrentUserData();
+      });
+    }
     downloadButton.dataset.boundClick = 'true';
   }
 
@@ -1159,12 +1179,13 @@ window.addEventListener('load', function() {
 // ============================================
 
 document.addEventListener('click', function(e) {
-  // Handle chip selections via event delegation
-  if (e.target.classList.contains('chip')) {
-    const category = e.target.parentElement.dataset.category;
-    if (category) {
-      selectChip(e.target, category, e.target.textContent);
-    }
+  // Handle future chip controls that do not already use inline onclick handlers.
+  const chip = e.target.closest('.chip');
+  if (!chip || chip.hasAttribute('onclick')) return;
+
+  const category = chip.parentElement?.dataset?.category;
+  if (category) {
+    selectChip(chip, category, chip.textContent);
   }
 });
 

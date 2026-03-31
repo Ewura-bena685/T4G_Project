@@ -645,7 +645,7 @@
               <div class="insight-section">
                 <h3 class="insight-title"><i class="fas fa-sticky-note"></i> Notes</h3>
                 <textarea id="insights-notes" class="form-input form-input--textarea" placeholder="Add any additional notes about your day..." rows="8"></textarea>
-                <button id="save-insights-btn" type="button" class="btn btn--primary btn--block mt-lg"><i class="fas fa-save"></i> Save Notes</button>
+                <button id="save-insights-btn" type="button" class="btn btn--primary btn--block mt-lg" onclick="saveCurrentInsight()"><i class="fas fa-save"></i> Save Notes</button>
               </div>
 
               <!-- Summary Card -->
@@ -975,7 +975,7 @@
             <div class="card">
               <h2 class="card__title"><i class="fas fa-lock"></i> Privacy & Data</h2>
               <p style="color: #666; margin-bottom: 16px; font-size: 14px;">Your data is always private and secure. We never share your cycle information without permission.</p>
-              <button id="download-data-btn" type="button" class="btn btn--light"><i class="fas fa-download"></i> Download My Data</button>
+              <button id="download-data-btn" type="button" class="btn btn--light" onclick="downloadCurrentUserData()"><i class="fas fa-download"></i> Download My Data</button>
               <button id="clear-data-btn" type="button" class="btn btn--light" style="margin-top: 8px;"><i class="fas fa-trash-alt"></i> Clear All Data</button>
             </div>
           </div>
